@@ -1,0 +1,12 @@
+# Local Codex / SSH test artifacts
+.codex_known_hosts
+
+# Python runtime
+__pycache__/
+*.pyc
+.venv/
+tools/keybox_git_bridge/.venv/
+
+# Local-only bridge config/environment
+.env
+*.local.json
