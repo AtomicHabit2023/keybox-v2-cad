@@ -2,7 +2,7 @@
 
 A deliberately restricted local MCP server that lets Codex perform the Git operations needed for the KeyBox V2 CAD review loop **without giving the Codex sandbox direct access to the owner's SSH private key or unrestricted filesystem**.
 
-The bridge is intended to run as the normal Windows user. It is hard-scoped to one repository and exposes only a small allowlist of Git operations.
+The bridge runs as the normal Windows user, listens only on localhost, is hard-scoped to one repository, and exposes only a small allowlist of Git operations.
 
 ## Allowed repository
 
@@ -13,6 +13,10 @@ Default:
 Override only when deliberately relocating the repo:
 
 `KEYBOX_REPO=<absolute path>`
+
+Default MCP endpoint:
+
+`http://127.0.0.1:8765/mcp`
 
 ## Exposed tools
 
@@ -34,13 +38,14 @@ Safety behavior:
 - branch names are validated;
 - `git_push_head` refuses to push `main`;
 - subprocesses use `shell=False`;
-- all commands run only inside the configured KeyBox repository.
+- all commands run only inside the configured KeyBox repository;
+- HTTP transport binds to `127.0.0.1`, not the LAN.
 
-## Install
+## One-time install
 
 Python 3.10+ is required. The official MCP Python SDK v2 is used.
 
-From a normal Windows PowerShell, not inside the Codex sandbox:
+Run from a **normal Windows PowerShell**, not inside the Codex sandbox:
 
 ```powershell
 cd C:\Users\wirat\Documents\Codex\keybox-v2-cad\tools\keybox_git_bridge
@@ -50,36 +55,48 @@ python -m pip install --upgrade pip
 python -m pip install "mcp>=2,<3"
 ```
 
-The MCP Python SDK's CLI can run this server over stdio. A simple development test is:
+## Start the bridge
+
+From the same normal Windows account:
 
 ```powershell
+cd C:\Users\wirat\Documents\Codex\keybox-v2-cad\tools\keybox_git_bridge
 .\.venv\Scripts\Activate.ps1
-mcp dev server.py
+python server.py
 ```
 
-For Codex, configure the bridge as a local stdio MCP server using the Python/MCP environment above. Exact Codex UI/config placement can vary by version; the important runtime command is equivalent to:
+Leave that small PowerShell window running while Codex is doing CAD work. The bridge should listen at:
 
-```powershell
-mcp run server.py
-```
+`http://127.0.0.1:8765/mcp`
 
-and the working directory should be this `tools\keybox_git_bridge` folder.
+The server code uses MCP Streamable HTTP. The official MCP Python SDK v2 supports this transport; the server is intentionally local-only.
+
+## Add to Codex
+
+Add a custom HTTP MCP server named something like:
+
+`keybox-git`
+
+with URL:
+
+`http://127.0.0.1:8765/mcp`
+
+Exact UI placement can vary by Codex version. After adding it, ask Codex to list/use the `keybox-git` tools.
 
 ## First connection test
 
-After adding the bridge to Codex, ask Codex to call only:
+Ask Codex to call only:
 
 `git_status`
 
-Expected result: it reports the KeyBox repository path, current branch and status without attempting to access `.ssh` from inside the Codex sandbox.
+Expected result: it reports the KeyBox repository path, current branch and status **without trying to read `.ssh` from inside the Codex sandbox**.
 
 Then test:
 
 1. `git_fetch_origin`
-2. `git_create_or_switch_branch("cad/CAD-TEST")`
-3. `git_status`
+2. `git_status`
 
-Do not push the test branch unless needed. Delete/cleanup can be done manually afterward because destructive cleanup is intentionally not exposed by this bridge.
+For real CAD work, create branches only when a task is released, e.g. `git_create_or_switch_branch("cad/CAD-002")`.
 
 ## Why this solves the earlier failure
 
@@ -87,4 +104,4 @@ Codex's normal sandbox could edit the repository but could not read the user's `
 
 ## Operational rule
 
-From CAD-002 onward Codex should use the bridge for all network Git operations and should work on `cad/CAD-###` branches. Direct pushes to `main` remain a design-authority action only.
+From CAD-002 onward Codex should use the bridge for all network Git operations and work on `cad/CAD-###` branches. Direct pushes to `main` remain blocked by the bridge.
