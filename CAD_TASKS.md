@@ -2,7 +2,7 @@
 
 ## CAD-001 — Rebuild master door cell, folds only
 
-**Status:** AWAITING DESIGN REVIEW — FOLDS SAVED AND CHECKPOINTED
+**Status:** RESTORED LOCALLY; awaiting final evidence checkpoint and design-authority review
 
 ### Goal
 Create a correct one-row / one-column master-cell door in Fusion using actual sheet-metal features and the approved parameters. This replaces the inaccurate earlier Phase-2 latch reference geometry.
@@ -10,12 +10,17 @@ Create a correct one-row / one-column master-cell door in Fusion using actual sh
 ### Build only
 
 - One 90 × 50 × 100 mm reference cell envelope.
-- Door face: 87.5 × 47.0 mm, 1.2 mm sheet.
+- Complete **formed door envelope**: maximum 87.5 × 47.0 mm in the cabinet front plane.
+- Door sheet: 1.2 mm.
 - Top inward hinge flange: 10 mm.
 - Bottom inward hinge flange: 10 mm.
 - First latch-side flange: 12 mm at 90°.
 - Second latch-side return flange: 25 mm at 90°.
 - Use the project sheet-metal rule values: 1.2 mm thickness, 1.5 mm starting inside bend radius, K-factor 0.42 starting.
+
+### Important dimensional rule
+
+`87.5 × 47.0 mm` is the **maximum complete formed door envelope**, not the uninterrupted planar center face. The planar center face is a derived result of the bend geometry. The restored CAD-001 baseline measured approximately **84.8 × 41.6 mm** for that planar region; this is evidence, not a new controlling parameter.
 
 ### Do not build yet
 
@@ -29,17 +34,19 @@ Create a correct one-row / one-column master-cell door in Fusion using actual sh
 
 ### Acceptance checks
 
-- Visible door face remains 87.5 × 47.0 mm after forming.
+- Complete formed door envelope is no larger than 87.5 × 47.0 mm.
+- The door fits inside the 90 × 50 mm pitch with the intended nominal gaps.
 - Top and bottom hinge flanges point inward toward tenant compartment.
 - 12 mm first latch flange points inward.
 - 25 mm second return is oriented as agreed to create the hidden catch-mounting return.
 - No impossible corner overlap between top/bottom hinge flanges and latch-side double fold.
-- Identify exact bend-relief requirement at the intersecting corners.
-- Report actual overall formed envelope.
-- Provide front, top, and isometric screenshots/measurements if Fusion MCP supports capture/inspection.
+- Exact bend-relief treatment is identified and remains parametric.
+- Report the derived uninterrupted planar-face size separately from the formed envelope.
+- Flat pattern generates successfully.
+- Provide front, top, and isometric screenshots plus machine-readable measurements.
 
 ### Stop gate
-Stop after the folds are correct and logged. Await design-authority approval before CAD-002.
+Stop after the folds are correct and logged. Await explicit design-authority approval before CAD-002.
 
 ---
 
