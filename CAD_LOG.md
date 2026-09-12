@@ -26,3 +26,43 @@ Stop after those folds are measured and visually verified. Do not add U-catch or
 - No corner self-intersection.
 - Finished door face remains 87.5 × 47.0 mm.
 - All repeated dimensions driven from named parameters.
+
+## 2026-09-12 — CAD-001 folds completed; awaiting design review
+
+- Connected Codex to the Autodesk Fusion MCP endpoint at `http://127.0.0.1:27182/mcp`.
+- Active Fusion document: `KeyBox_V2_Phase1_Reference`.
+- Preserved the superseded `01_MASTER_LATCH_CELL` geometry unchanged and hidden for review.
+- Created a separate `CAD001_REFERENCE_CELL` envelope at the `MASTER_CELL_SHIFT_X = 550 mm` review offset.
+- Created `02_CAD001_MASTER_DOOR_FOLDS` as a true sheet-metal component.
+- Created sheet-metal rule `KEYBOX_V2_CAD001_1P2MM (Convert)` with:
+  - thickness: 1.2 mm;
+  - inside bend radius: 1.5 mm;
+  - K-factor: 0.42;
+  - relief width: 2.0 mm;
+  - relief depth: 3.5 mm.
+- Created four healthy 90-degree bend features:
+  - `BEND_TOP_INWARD_90` — 10 mm top hinge flange;
+  - `BEND_BOTTOM_INWARD_90` — 10 mm bottom hinge flange;
+  - `BEND_LATCH_FIRST_90` — 12 mm first latch-side flange;
+  - `BEND_LATCH_RETURN_90` — 25 mm hidden return.
+- Final formed envelope measured 87.5 mm wide × 12.0 mm deep × 47.0 mm high, with local bounds X = 0.0–87.5 mm, Y = 0.0–12.0 mm, and Z = 1.5–48.5 mm inside the 90 × 50 × 100 mm reference cell.
+- The 87.5 × 47.0 mm door-face requirement was interpreted as the finished front projection including the bend zones. The largest uninterrupted planar region between bend tangencies measures 84.8 × 41.6 mm. This interpretation requires design-authority confirmation before CAD-002.
+- The top, bottom, and latch-side flanges all project inward toward positive compartment depth.
+- Both latch-side intersections use a 3.5 mm boundary cutback, with the rule supplying 2.0 mm × 3.5 mm bend relief. Visual inspection found no impossible corner overlap.
+- Sheet-metal validation passed: one valid sheet-metal body, four healthy bend features, eight cylindrical bend faces, and a successfully generated flat pattern.
+- Flat-pattern bounding size measured 119.995752 × 62.495752 × 1.2 mm. This is review evidence only, not a released manufacturing blank.
+- Review images:
+  - `evidence/CAD001/CAD001_front.png`
+  - `evidence/CAD001/CAD001_top.png`
+  - `evidence/CAD001/CAD001_isometric.png`
+- No U-catch, shield, service wall, lock, shim, hinge rod, or patterned copies were added.
+- Stop gate reached. CAD-002 remains blocked pending design-authority approval.
+- Assumptions used for CAD-001:
+  - component local +Y is inward toward the tenant compartment;
+  - the door is vertically centered in the 50 mm reference cell, leaving 1.5 mm nominal clearance above and below the 47 mm formed projection;
+  - the 12 mm and 25 mm latch dimensions are formed-envelope distances from the original door-edge reference;
+  - the initial corner treatment uses the specified 3.5 mm boundary cutback and the rule's 2.0 mm relief width; final shop-specific relief shape remains subject to bend-coupon and fabrication review;
+  - the Fusion Join By Bend preview API is acceptable for this checkpoint because it produced four healthy parametric bend features and a valid flat pattern.
+- Saved the active Fusion document as `KeyBox_V2_CAD001_MasterDoor` in the `KeyBox System` Fusion folder. Saved state was verified with `isModified = false`.
+- Exported the native Fusion archive checkpoint to `evidence/CAD001/KeyBox_V2_CAD001_MasterDoor.f3d`.
+- Exact machine-readable measurements are stored in `evidence/CAD001/CAD001_MEASUREMENTS.json`; execution and review notes are stored in `evidence/CAD001/README.md`.

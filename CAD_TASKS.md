@@ -2,7 +2,7 @@
 
 ## CAD-001 — Rebuild master door cell, folds only
 
-**Status:** READY
+**Status:** AWAITING DESIGN REVIEW — FOLDS SAVED AND CHECKPOINTED
 
 ### Goal
 Create a correct one-row / one-column master-cell door in Fusion using actual sheet-metal features and the approved parameters. This replaces the inaccurate earlier Phase-2 latch reference geometry.
