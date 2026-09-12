@@ -12,6 +12,8 @@ mcp = MCPServer("KeyBox Git Bridge")
 
 DEFAULT_REPO = r"C:\Users\wirat\Documents\Codex\keybox-v2-cad"
 REPO = Path(os.environ.get("KEYBOX_REPO", DEFAULT_REPO)).expanduser().resolve()
+BRIDGE_HOST = os.environ.get("KEYBOX_BRIDGE_HOST", "127.0.0.1")
+BRIDGE_PORT = int(os.environ.get("KEYBOX_BRIDGE_PORT", "8765"))
 
 _BRANCH_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._/-]{0,119}$")
 
@@ -150,3 +152,11 @@ def git_push_head() -> dict[str, Any]:
         }
 
     return _git("push", "-u", "origin", "HEAD", timeout=240)
+
+
+if __name__ == "__main__":
+    mcp.run(
+        transport="streamable-http",
+        host=BRIDGE_HOST,
+        port=BRIDGE_PORT,
+    )
