@@ -1,0 +1,8 @@
+[project]
+name = "keybox-git-bridge"
+version = "0.1.0"
+description = "Restricted MCP Git bridge for the KeyBox V2 CAD repository"
+requires-python = ">=3.10"
+dependencies = [
+  "mcp>=2,<3"
+]
