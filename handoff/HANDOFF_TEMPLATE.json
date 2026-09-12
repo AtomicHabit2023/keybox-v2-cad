@@ -1,0 +1,16 @@
+{
+  "task": "CAD-###",
+  "status": "READY_FOR_DESIGN_REVIEW",
+  "branch": "cad/CAD-###",
+  "fusion_document": "",
+  "head_sha": "",
+  "summary": "",
+  "evidence": [],
+  "checks": {
+    "sheet_metal_health": "NOT_APPLICABLE",
+    "interference": "NOT_APPLICABLE",
+    "flat_pattern": "NOT_APPLICABLE"
+  },
+  "deviations": [],
+  "questions_for_design_authority": []
+}
