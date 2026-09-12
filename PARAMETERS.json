@@ -22,8 +22,8 @@
     "BEND_RELIEF_D": 3.5,
     "DOOR_H_GAP": 2.5,
     "DOOR_V_GAP": 3.0,
-    "DOOR_FACE_W": 87.5,
-    "DOOR_FACE_H": 47.0,
+    "DOOR_ENVELOPE_W": 87.5,
+    "DOOR_ENVELOPE_H": 47.0,
     "HINGE_FLANGE": 10.0,
     "HINGE_ROD_D": 4.0,
     "HINGE_HOLE_D": 4.6,
@@ -57,7 +57,13 @@
     "CABLE_TIE_SLOT_L": 6.0,
     "CABLE_TIE_PITCH": 100.0
   },
+  "legacy_aliases": {
+    "DOOR_FACE_W": "deprecated name; use DOOR_ENVELOPE_W. Existing Fusion features may keep the old parameter name until deliberately migrated.",
+    "DOOR_FACE_H": "deprecated name; use DOOR_ENVELOPE_H. Existing Fusion features may keep the old parameter name until deliberately migrated."
+  },
   "derived_or_tbd": {
+    "DOOR_PLANAR_W": "derived from the formed sheet-metal bend geometry; CAD-001 restored baseline measured about 84.8 mm",
+    "DOOR_PLANAR_H": "derived from the formed sheet-metal bend geometry; CAD-001 restored baseline measured about 41.6 mm",
     "CABINET_BODY_W": "derive from final outer-side geometry; control bay must match it exactly",
     "BLUE_SHIELD_FRONT_SETBACK": "derive from real U-catch sweep + CATCH_SWEEP_CLEAR",
     "RED_WALL_DEPTH": "derive from final XG-07A placement; stop near rear edge of lock to open into service channel",
@@ -73,8 +79,9 @@
     "slot_formula": "SLOT_W = SHEET_T + SLOT_CLEARANCE",
     "matrix_height_formula": "MATRIX_H = ROW_PITCH * NUM_ROWS",
     "core_width_formula": "CORE_W = COL_PITCH * NUM_COLS + SVC_W * 2",
-    "door_width_formula": "DOOR_FACE_W = COL_PITCH - DOOR_H_GAP",
-    "door_height_formula": "DOOR_FACE_H = ROW_PITCH - DOOR_V_GAP",
+    "door_envelope_width_formula": "DOOR_ENVELOPE_W = COL_PITCH - DOOR_H_GAP",
+    "door_envelope_height_formula": "DOOR_ENVELOPE_H = ROW_PITCH - DOOR_V_GAP",
+    "door_planar_rule": "DOOR_PLANAR_W/H are derived results, never independent controlling dimensions",
     "grid_slot_depth_formula": "GRID_SLOT_DEPTH = COMP_DEPTH / 2"
   }
 }
