@@ -37,6 +37,7 @@
     "KEY_SPACE_W": 65.0,
     "LOCK_ZONE_W": 25.0,
     "BLUE_SHIELD_PARTITION_X": 65.0,
+    "BLUE_SHIELD_FRONT_RETURN_W": 25.0,
     "SOL_BODY_L": 53.0,
     "SOL_BODY_H": 40.0,
     "SOL_BODY_T": 13.0,
@@ -74,7 +75,7 @@
     "DOOR_PLANAR_W": "derived from the formed sheet-metal bend geometry; CAD-001 restored baseline measured about 84.8 mm",
     "DOOR_PLANAR_H": "derived from the formed sheet-metal bend geometry; CAD-001 restored baseline measured about 41.6 mm",
     "CABINET_BODY_W": "derive from final outer-side geometry; control bay must match it exactly",
-    "BLUE_SHIELD_FRONT_SETBACK": "derive along +Y from corrected CAD-003 catch sweep at BLUE_SHIELD_PARTITION_X plus CATCH_SWEEP_CLEAR",
+    "BLUE_SHIELD_FRONT_SETBACK": "derive along +Y from corrected CAD-003 catch sweep; it is the Y position of the L-shield front return / leading bend",
     "RED_WALL_DEPTH": "derive from final XG-07A placement; stop near rear edge of lock to open into service channel",
     "SOL_SHIM_T": "derive from actual U-catch/XG-07A hook alignment; expected roughly 7-8 mm initially",
     "MAIN_HINGE_AXIS_OFFSET": "derive from chosen hinge hardware and 90-degree cabinet swing",
@@ -90,6 +91,7 @@
     "door_envelope_height_formula": "DOOR_ENVELOPE_H = ROW_PITCH - DOOR_V_GAP",
     "door_planar_rule": "DOOR_PLANAR_W/H are derived results, never independent controlling dimensions",
     "grid_slot_depth_formula": "GRID_SLOT_DEPTH = COMP_DEPTH / 2",
-    "blue_shield_partition_formula": "BLUE_SHIELD_PARTITION_X = KEY_SPACE_W"
+    "blue_shield_partition_formula": "BLUE_SHIELD_PARTITION_X = KEY_SPACE_W",
+    "blue_shield_front_return_formula": "BLUE_SHIELD_FRONT_RETURN_W = LOCK_ZONE_W"
   }
 }
