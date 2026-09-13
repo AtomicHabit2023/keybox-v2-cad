@@ -6,6 +6,21 @@ This repository is a controlled CAD collaboration between:
 - **Codex** — CAD execution agent operating Autodesk Fusion 360 through Fusion MCP.
 - **Owner** — final business/product owner and physical-world operator; should only be asked for decisions that genuinely require human judgment, measurements, purchases, fabrication, or approval of material/product tradeoffs.
 
+## Mandatory control-state synchronization before every run
+
+A plain `git fetch origin` is **not enough**. It updates remote-tracking refs but does not update the checked-out task branch or working-tree control files.
+
+Before deciding whether CAD work is allowed, Codex must:
+
+1. use the KeyBox Git Bridge to fetch origin;
+2. switch to local `main`;
+3. fast-forward pull `main` from origin;
+4. read the controlling files from the refreshed `main` working tree, especially the latest `reviews/CAD-###_RESULT.md`, `CAD_TASKS.md`, and this file;
+5. determine the currently authorized task/status;
+6. only then switch back to the relevant `cad/CAD-###` task branch and perform the authorized CAD work.
+
+Never infer design-authority state from a stale task branch. If the refreshed `main` cannot be read, make no CAD changes and report the synchronization failure.
+
 ## Read order before every CAD task
 
 1. `AGENTS.md`
@@ -47,7 +62,7 @@ The owner workstation is adequate for the master-cell work but has limited RAM/g
 
 For each new CAD stage after CAD-001 closure:
 
-1. Synchronize `main` through the KeyBox Git Bridge.
+1. Refresh and read `main` exactly as defined in **Mandatory control-state synchronization before every run**.
 2. Work on branch `cad/CAD-###` (for example `cad/CAD-002`).
 3. Modify Fusion only within the current task scope.
 4. At the stop gate, save Fusion and generate the required evidence.
@@ -62,7 +77,7 @@ The design authority will review the pushed branch/PR and write `reviews/CAD-###
 - `CHANGES_REQUIRED`
 - `HUMAN_DECISION_REQUIRED`
 
-After the result becomes available, pull it through the Git Bridge. Proceed only as instructed.
+After the result becomes available, refresh `main` through the Git Bridge and proceed only as instructed.
 
 ## Human escalation rule
 
