@@ -4,60 +4,43 @@ STATUS: CHANGES_REQUIRED
 
 ## Decision
 
-The corrected rerun successfully used the frozen 5.0 mm / 5.0 mm hinge axis, but CAD-003 is **not approved yet**.
+The latest constant-X rerun is directionally correct and exposed a small, solvable clearance conflict rather than a product-level decision.
 
-The submitted rerun created a constant-Y X-Z shield face at Y = 43.5 mm with a 119 x 43 mm relief extending from X = -39 mm to X = 80 mm. That opening is wider than the 90 mm compartment pitch and therefore cannot represent the intended local protective shield geometry.
+Codex reports the nominal blue-shield partition at `X = 65.0 mm` gives **3.40037 mm minimum moving clearance at 0°**, below the required `CATCH_SWEEP_CLEAR = 4.0 mm` by **0.59963 mm**.
 
-This exposed a design-authority interpretation error in the previous rerun instruction: the project master specification describes the blue shield as the protective partition between the 65 mm key space and the 25 mm lock/shield zone adjacent to the service channel, with a CAD-derived **front setback along depth** and a local U-catch pass-through. Its primary shield plane is therefore a constant-X Y-Z partition, not a full constant-Y front wall.
+This does **not** require owner escalation. Resolve it within CAD-003 by adjusting only the shield's Y-direction leading-edge setback / local relief while preserving the frozen hinge axis, approved door/catch, and nominal shield X position.
 
-The previous constant-Y instruction is superseded by this result and by `DESIGN_ERRATA.md` E-002.
+## Frozen geometry — do not change
 
-## Frozen hinge-axis definition — remains approved
+- `HINGE_AXIS_EDGE_OFFSET = 5.0 mm`.
+- `HINGE_AXIS_FRONT_OFFSET = 5.0 mm`.
+- Hinge axis direction = Z.
+- Blue-shield partition nominal plane = `X = 65.0 mm`.
+- CAD-001 door and CAD-002 U-catch remain unchanged.
 
-- `HINGE_AXIS_EDGE_OFFSET = 5.0 mm` from the hinge-side door edge.
-- `HINGE_AXIS_FRONT_OFFSET = 5.0 mm` behind the front-face plane.
-- Axis direction = Z.
-- Ø4.6 mm guide holes centered on that axis for the Ø4.0 mm rod reference.
+## Required correction
 
-Do not change the hinge axis in the next rerun.
-
-## Correct blue-shield interpretation
-
-Use the existing master-cell width allocation:
-
-- `KEY_SPACE_W = 65.0 mm`
-- `LOCK_ZONE_W = 25.0 mm`
-- nominal blue-shield partition plane: `X = KEY_SPACE_W = 65.0 mm`
-- sheet thickness: 1.2 mm, extending into the lock-zone side unless Fusion construction requires an equivalent centered reference.
-
-The term `BLUE_SHIELD_FRONT_SETBACK` means the **leading edge of this constant-X shield along +Y compartment depth**. It does not mean a separate constant-Y wall across the whole compartment.
-
-## Required CAD-003 rerun
-
-Correct only CAD-003 while preserving approved CAD-001 and CAD-002 geometry unchanged:
-
-1. Keep the frozen hinge axis at local X = 5.0 mm, Y = 5.0 mm, direction Z.
-2. Replace the 119 mm constant-Y shield-front concept with a lightweight constant-X Y-Z blue-shield partition at nominal X = 65.0 mm.
-3. Evaluate the moving U-catch at 0°, 15°, 30°, 45°, 60°, 75°, and 90°.
-4. Derive the **local Y-Z pass-through opening from the part of the moving U-catch envelope that actually intersects or approaches the 1.2 mm shield slab at X = 65 mm**. Do not project the entire 0–90° sweep onto the shield plane.
-5. Add at least `CATCH_SWEEP_CLEAR = 4.0 mm` around the relevant moving envelope at the shield.
-6. Derive `BLUE_SHIELD_FRONT_SETBACK` along Y from the corrected sweep. Preserve as much front shielding as possible while guaranteeing motion clearance.
-7. Report: shield X position, front-setback Y, opening Y range/depth, opening Z range/height, closest door angle, and minimum measured clearance.
-8. If the required opening consumes essentially the whole 25 mm lock/shield zone, creates an unavoidable straight tenant tool path, or cannot maintain 4 mm clearance, stop with `HUMAN_DECISION_REQUIRED`; do not enlarge the opening outside the 90 mm cell or redesign CAD-001/CAD-002 silently.
-9. Do not add XG-07A lock body, shim, red wall, final hinge hardware, or patterned rows/columns.
-10. Regenerate the review evidence, update `CAD_LOG.md` and `handoff/CAD-003.json` to `READY_FOR_DESIGN_REVIEW`, push `cad/CAD-003`, and stop.
+1. Keep the constant-X Y-Z blue-shield partition at nominal `X = 65.0 mm`.
+2. Keep the corrected local Y-Z U-catch relief concept; do not revert to the superseded 119 mm constant-Y wall/opening.
+3. Increase `BLUE_SHIELD_FRONT_SETBACK` only along +Y as little as practical until the full sampled 0°–90° motion clears the shield by at least 4.0 mm.
+4. For review robustness, target **at least 4.5 mm measured minimum clearance** rather than stopping numerically at exactly 4.000 mm. The governing fabrication requirement remains 4.0 mm minimum.
+5. Start by moving the current shield leading edge rearward by approximately **1.1 mm** (0.59963 mm shortfall + ~0.5 mm review margin), then remeasure; derive/fine-tune the exact setback from Fusion rather than hard-coding the estimate if geometry makes the relationship non-linear.
+6. Preserve as much front shielding as possible. Do not enlarge the opening or move the whole shield farther rearward than needed once the >=4.5 mm review target is achieved.
+7. Re-evaluate 0°, 15°, 30°, 45°, 60°, 75°, and 90° and report the final front-setback Y, local opening Y/Z extents, closest angle, and measured minimum clearance.
+8. If achieving >=4.0 mm still forces a major opening, essentially consumes the 25 mm lock/shield zone, or creates a straight tenant tool path, stop with `HUMAN_DECISION_REQUIRED`.
+9. Otherwise regenerate evidence, update `CAD_LOG.md` and `handoff/CAD-003.json` to `READY_FOR_DESIGN_REVIEW`, push `cad/CAD-003`, and stop.
+10. Do not start CAD-004.
 
 ## Acceptance checks
 
 - Frozen 5 mm / 5 mm hinge axis preserved.
-- Blue shield represented as the service-side partition at nominal X = 65 mm.
-- `BLUE_SHIELD_FRONT_SETBACK` is a Y-direction leading-edge setback.
-- Relief/opening is a local Y-Z opening derived only from the catch envelope at the shield, not the full sweep projection.
-- Opening remains geometrically local to the 90 mm cell / 25 mm lock zone.
-- Minimum moving clearance is at least 4.0 mm.
+- Blue shield remains the constant-X service-side partition at nominal X = 65 mm.
+- Only the local relief / Y-direction front setback is adjusted to solve the 3.40037 mm conflict.
+- Final measured minimum clearance >= 4.0 mm; review target >= 4.5 mm.
+- Front shielding is not reduced more than required.
 - CAD-001 and CAD-002 remain unchanged and healthy.
 - No CAD-004 geometry is added.
 
 ## Hold
 
-CAD-004 remains blocked until the corrected CAD-003 shield/sweep geometry is approved.
+CAD-004 remains blocked until this corrected CAD-003 evidence is reviewed and approved.
