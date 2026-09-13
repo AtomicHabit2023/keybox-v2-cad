@@ -45,7 +45,7 @@ See `reviews/CAD-002_RESULT.md` for the controlling approval.
 
 ## CAD-003 — Blue shield + true U-catch sweep
 
-**Status:** CHANGES REQUIRED / SIDE-SHIELD RERUN RELEASED — see `reviews/CAD-003_RESULT.md` and `DESIGN_ERRATA.md` E-002
+**Status:** CHANGES REQUIRED / L-SHIELD REBUILD RELEASED — see `reviews/CAD-003_RESULT.md` and `DESIGN_ERRATA.md` E-002
 
 ### Frozen hinge axis
 
@@ -54,25 +54,32 @@ See `reviews/CAD-002_RESULT.md` for the controlling approval.
 - Axis direction = Z.
 - Ø4.6 mm door guide holes centered on this axis for the Ø4.0 mm shared hinge rod reference.
 
-### Controlling shield interpretation
+### Controlling shield form
 
 - Tenant key-space width: **65 mm**.
 - Lock/shield-zone width: **25 mm**.
-- Nominal blue-shield partition: **constant-X Y-Z plane at X = 65 mm**.
-- `BLUE_SHIELD_FRONT_SETBACK` is the shield's leading edge along **+Y compartment depth**.
-- The U-catch pass-through is a local **Y-Z relief** in this partition.
-- Do **not** use the superseded constant-Y X-Z wall / 119 mm relief interpretation.
+- Blue shield is a formed **L-section**, not a small frame.
+- Side partition: constant-X Y-Z sheet at nominal **X = 65 mm**, running rearward from a CAD-derived front setback toward the compartment rear.
+- Front return: short constant-Y X-Z face at the side partition's leading edge, turning toward the service-channel side across the **25 mm lock zone**.
+- U-catch passage: local **horizontal slot/notch in the front return**, sized from the real moving U-catch envelope plus at least **4 mm** clearance.
+- `BLUE_SHIELD_FRONT_SETBACK` is the Y position of the front return / leading bend.
+- The side partition remains continuous/solid except for only minimum proven transition relief.
+- Do **not** use the rejected four-web rectangular frame or the superseded full-width constant-Y wall / 119 mm relief.
 
 ### Corrected scope
 
-- Preserve the approved CAD-001 door and approved CAD-002 U-catch unchanged.
+- Preserve approved CAD-001 door and CAD-002 U-catch unchanged.
 - Keep the frozen 5 mm / 5 mm hinge axis.
-- Model only the lightweight constant-X blue-shield partition needed for the sweep study.
-- Evaluate 0°, 15°, 30°, 45°, 60°, 75°, and 90°.
-- Derive the local Y-Z relief from only the moving catch geometry that intersects/approaches the 1.2 mm shield slab at X = 65 mm, plus at least **4 mm safety allowance**.
-- Derive `BLUE_SHIELD_FRONT_SETBACK` along Y while preserving as much protective front material as practical.
-- Report shield X, front-setback Y, opening Y range/depth, opening Z range/height, closest angle, and minimum clearance.
-- If a secure local opening cannot be achieved inside the intended 90 mm cell / 25 mm lock zone, stop with `HUMAN_DECISION_REQUIRED` rather than enlarging the opening or redesigning CAD-001/CAD-002.
+- Rebuild the CAD-003 shield reference as one lightweight 1.2 mm L-shaped formed sheet segment for the master row:
+  - side leg at X=65 mm;
+  - side leg extends from `BLUE_SHIELD_FRONT_SETBACK` rearward toward Y=100 mm;
+  - front return at the leading edge spans nominally X=65..90 mm.
+- Model the U-catch slot/notch in the front return, not as a freestanding frame around the catch.
+- Evaluate motion at 0°, 15°, 30°, 45°, 60°, 75°, and 90°.
+- Derive both the front setback and the smallest practical front-return slot/notch from the moving catch envelope.
+- Measure clearance to slot/notch edges and any nearby side-partition/bend metal.
+- Minimum required moving clearance = **4.0 mm**; review target >=4.5 mm where practical.
+- Keep maximum protective metal and avoid a straight tenant tool path toward wiring/emergency-release areas.
 
 ### Do not build yet
 
@@ -84,7 +91,7 @@ See `reviews/CAD-002_RESULT.md` for the controlling approval.
 
 ### Stop gate / evidence
 
-Correct only CAD-003. Save a new Fusion checkpoint; provide front/top/isometric views plus motion/interference evidence at 0°, 15°, 30°, 45°, 60°, 75°, and 90°; update `CAD_LOG.md`; update `handoff/CAD-003.json` with `READY_FOR_DESIGN_REVIEW`; push branch `cad/CAD-003`; stop for design-authority review.
+Correct only CAD-003. Save a new Fusion checkpoint; provide an isolated clear view of the full L-shaped shield segment plus front/top/isometric and 0°/15°/30°/45°/60°/75°/90° motion evidence; report front setback, front-return span, slot/notch X/Z extents, governing edge/corner, closest angle, and minimum clearance; update `CAD_LOG.md`; update `handoff/CAD-003.json` with `READY_FOR_DESIGN_REVIEW`; push branch `cad/CAD-003`; stop for design-authority review.
 
 ---
 
