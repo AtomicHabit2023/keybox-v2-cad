@@ -78,3 +78,30 @@ Stop after those folds are measured and visually verified. Do not add U-catch or
 - Created the final review package at `evidence/CAD001_FINAL/`, including front, top, and isometric views; machine-readable measurements; notes; and the saved native `.f3d` checkpoint.
 - No Fusion geometry was modified while preparing the final evidence package.
 - CAD-002 remains blocked and was not started.
+
+## 2026-09-13 — CAD-002 real U-catch completed; ready for design review
+
+- Synchronized `main` after `reviews/CAD-001_RESULT.md` approved CAD-001 and explicitly released CAD-002.
+- Created task branch `cad/CAD-002` and saved a separate Fusion checkpoint as `KeyBox_V2_CAD002_UCatch`, preserving the approved CAD-001 document and door geometry.
+- Preserved `02_CAD001_MASTER_DOOR_FOLDS` as one unchanged sheet-metal body with 10 healthy features and its flat pattern present.
+- Added `03_CAD002_XG07A_UCATCH` as a separate grounded component at the same 550 mm occurrence transform as the approved door.
+- Modeled the catch as a 20.0 × 36.5 × 1.5 mm plate plus a round 3.0 mm rod U loop made from two projecting legs and a distal bridge, rather than the superseded crude bounding block.
+- Mounted the plate on the outer face of the 25 mm hidden return. Local plate bounds are X = 62.5–82.5 mm, Y = 12.0–13.5 mm, and Z = 6.75–43.25 mm.
+- Verified the approved 5.0 mm inward inset from the original door-edge reference at X = 87.5 mm to the plate edge at X = 82.5 mm.
+- Verified the loop's furthest point projects 26.0 mm from the plate outer face, from Y = 13.5 mm to Y = 39.5 mm.
+- Added named parameter `UCATCH_LOOP_LEG_SPACING = 12 mm` as an explicitly provisional dimension because the repository does not state the physical catch's leg-center spacing; design-authority confirmation is requested before fabrication use.
+- Generated fresh front, top, and isometric screenshots, machine-readable measurements, notes, and a native `.f3d` checkpoint under `evidence/CAD002/`.
+- Did not add a blue shield, XG-07A lock body, red service wall, shim, hinge rod, or patterned copies.
+- Did not perform or claim swept-motion approval; that work remains CAD-003.
+- Stop gate reached with `handoff/CAD-002.json` set to `READY_FOR_DESIGN_REVIEW`.
+
+## 2026-09-13 - CAD-002 controlling corrections completed; ready for design review
+
+- Switched to main and fast-forward pulled through the KeyBox Git Bridge, reading the refreshed AGENTS.md, CAD_TASKS.md, and controlling reviews/CAD-002_RESULT.md at 1070e73 before returning to cad/CAD-002.
+- Applied only the required catch corrections: plate height 34.5 mm; horizontal diameter 3 mm legs at 14 mm centers; two diameter 4.2 mm catch mounting holes at 25 mm vertical centers.
+- Verified 17 mm rod outside width, 11 mm inside clearance, 26 mm plate-to-loop projection, and unchanged 5 mm inward inset. The owner-confirmed spacing replaces the provisional 12 mm value.
+- Rebuilt only the catch as six fully constrained sketches and six healthy extrusion/cut features referencing named parameters. Preserved the lightweight four-body reference representation.
+- Verified the catch occurrence matches the door at the 550 mm review offset and is grounded. Confirmed the CAD-001 body revision, volume, topology, bounds, 10 healthy features, and existing flat pattern are unchanged.
+- Saved the corrected Fusion document, exported the native archive, regenerated machine-readable measurements and front/top/isometric images, and visually inspected all three views.
+- Updated evidence/CAD002/README.md and handoff/CAD-002.json to READY_FOR_DESIGN_REVIEW with no provisional spacing deviation or outstanding measurement question.
+- Stopped at the CAD-002 review gate. CAD-003 and all subsequent geometry remain blocked pending authority approval.

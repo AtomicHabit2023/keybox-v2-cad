@@ -1,0 +1,29 @@
+{
+  "task": "CAD-002",
+  "status": "READY_FOR_DESIGN_REVIEW",
+  "branch": "cad/CAD-002",
+  "fusion_document": "KeyBox_V2_CAD002_UCatch",
+  "head_sha": null,
+  "summary": "Corrected CAD-002 per the design-authority result read from refreshed main at 1070e73: 20 x 34.5 x 1.5 mm plate, two diameter 4.2 mm mounting holes at 25 mm vertical centers, and horizontal diameter 3 mm loop legs at 14 mm centers. Preserved 26 mm projection, 5 mm edge inset, and the unchanged CAD-001 door.",
+  "evidence": [
+    "evidence/CAD002/CAD002_front.png",
+    "evidence/CAD002/CAD002_top.png",
+    "evidence/CAD002/CAD002_isometric.png",
+    "evidence/CAD002/CAD002_MEASUREMENTS.json",
+    "evidence/CAD002/README.md",
+    "evidence/CAD002/KeyBox_V2_CAD002_UCatch.f3d"
+  ],
+  "checks": {
+    "sheet_metal_health": "PASS - CAD-001 body revision, volume, topology, 10 healthy features, and formed envelope unchanged",
+    "interference": "NOT_APPLICABLE — CAD-002 is the static catch-only gate; intentional plate/return mounting contact is present",
+    "flat_pattern": "PASS - approved CAD-001 flat pattern remains present",
+    "static_placement": "PASS - 5 mm inset, 26 mm projection, original 550 mm occurrence transform restored and verified",
+    "swept_motion": "NOT_TESTED — reserved for CAD-003",
+    "correction_dimensions": "PASS - 20 x 34.5 x 1.5 plate; two diameter 4.2 holes at 25 centers; horizontal diameter 3 rods at 14 centers, 17 outside, 11 clear",
+    "parametric_catch": "PASS - all six sketches fully constrained; six healthy extrusion/cut features driven by named functional parameters"
+  },
+  "deviations": [],
+  "questions_for_design_authority": [],
+  "controlling_decision": "reviews/CAD-002_RESULT.md on refreshed main 1070e73: CHANGES_REQUIRED",
+  "updated_utc": "2026-09-13T03:24:51.4199539Z"
+}
