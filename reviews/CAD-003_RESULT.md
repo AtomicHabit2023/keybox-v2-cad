@@ -4,11 +4,13 @@ STATUS: CHANGES_REQUIRED
 
 ## Decision
 
-The latest constant-X rerun is directionally correct and exposed a small, solvable clearance conflict rather than a product-level decision.
+The latest constant-X rerun is directionally correct, but the reported **3.40037 mm** value must be interpreted correctly before changing geometry.
 
-Codex reports the nominal blue-shield partition at `X = 65.0 mm` gives **3.40037 mm minimum moving clearance at 0°**, below the required `CATCH_SWEEP_CLEAR = 4.0 mm` by **0.59963 mm**.
+The U-catch is intentionally supposed to cross the blue-shield partition at `X = 65.0 mm` through a **local laser-cut Y-Z opening**, then enter the protected lock zone and engage the XG-07A hook. Therefore the design goal is **not** to keep the U-catch 4 mm away from the whole shield plane.
 
-This does **not** require owner escalation. Resolve it within CAD-003 by adjusting only the shield's Y-direction leading-edge setback / local relief while preserving the frozen hinge axis, approved door/catch, and nominal shield X position.
+The governing 4.0 mm clearance is the minimum distance between the moving U-catch and the **boundary of the modeled local opening / remaining shield material** throughout the door sweep.
+
+If the reported 3.40037 mm was measured to an uncut/full shield slab at a location where the U-catch is supposed to pass through, that is not a valid acceptance measurement and must not be solved merely by moving the shield backward. First model/confirm the intended local pass-through relief, then measure clearance to its edges.
 
 ## Frozen geometry — do not change
 
@@ -18,26 +20,29 @@ This does **not** require owner escalation. Resolve it within CAD-003 by adjusti
 - Blue-shield partition nominal plane = `X = 65.0 mm`.
 - CAD-001 door and CAD-002 U-catch remain unchanged.
 
-## Required correction
+## Required correction / verification
 
 1. Keep the constant-X Y-Z blue-shield partition at nominal `X = 65.0 mm`.
-2. Keep the corrected local Y-Z U-catch relief concept; do not revert to the superseded 119 mm constant-Y wall/opening.
-3. Increase `BLUE_SHIELD_FRONT_SETBACK` only along +Y as little as practical until the full sampled 0°–90° motion clears the shield by at least 4.0 mm.
-4. For review robustness, target **at least 4.5 mm measured minimum clearance** rather than stopping numerically at exactly 4.000 mm. The governing fabrication requirement remains 4.0 mm minimum.
-5. Start by moving the current shield leading edge rearward by approximately **1.1 mm** (0.59963 mm shortfall + ~0.5 mm review margin), then remeasure; derive/fine-tune the exact setback from Fusion rather than hard-coding the estimate if geometry makes the relationship non-linear.
-6. Preserve as much front shielding as possible. Do not enlarge the opening or move the whole shield farther rearward than needed once the >=4.5 mm review target is achieved.
-7. Re-evaluate 0°, 15°, 30°, 45°, 60°, 75°, and 90° and report the final front-setback Y, local opening Y/Z extents, closest angle, and measured minimum clearance.
-8. If achieving >=4.0 mm still forces a major opening, essentially consumes the 25 mm lock/shield zone, or creates a straight tenant tool path, stop with `HUMAN_DECISION_REQUIRED`.
-9. Otherwise regenerate evidence, update `CAD_LOG.md` and `handoff/CAD-003.json` to `READY_FOR_DESIGN_REVIEW`, push `cad/CAD-003`, and stop.
-10. Do not start CAD-004.
+2. Keep the frozen 5 mm / 5 mm hinge axis and approved U-catch unchanged.
+3. Explicitly model the local Y-Z laser-cut pass-through through which the U-catch crosses the 1.2 mm shield slab on its way into the lock zone.
+4. Derive that relief only from the portion of the moving U-catch envelope that intersects or approaches the shield slab during 0°–90° motion; do not project the entire sweep.
+5. Measure minimum distance from the moving U-catch to the **opening edges / remaining shield material**, not to the removed opening volume or to an uncut full shield plane.
+6. Required minimum edge clearance = `CATCH_SWEEP_CLEAR = 4.0 mm`; target >=4.5 mm for review robustness where practical.
+7. Adjust `BLUE_SHIELD_FRONT_SETBACK` along +Y only if the modeled opening-edge clearance actually requires it. Do not automatically move the shield rearward based solely on the old 3.40037 mm full-plane measurement.
+8. Preserve as much front shielding as possible and keep the opening local enough that it does not create a direct tenant tool path into wiring/emergency-release areas.
+9. Re-evaluate 0°, 15°, 30°, 45°, 60°, 75°, and 90° and report the local opening Y/Z extents, front-setback Y, closest angle, and minimum clearance to the opening boundary / remaining shield.
+10. If the required opening consumes essentially the whole 25 mm lock/shield zone or cannot maintain >=4.0 mm edge clearance without compromising security, stop with `HUMAN_DECISION_REQUIRED`.
+11. Otherwise regenerate evidence, update `CAD_LOG.md` and `handoff/CAD-003.json` to `READY_FOR_DESIGN_REVIEW`, push `cad/CAD-003`, and stop.
+12. Do not start CAD-004.
 
 ## Acceptance checks
 
 - Frozen 5 mm / 5 mm hinge axis preserved.
 - Blue shield remains the constant-X service-side partition at nominal X = 65 mm.
-- Only the local relief / Y-direction front setback is adjusted to solve the 3.40037 mm conflict.
-- Final measured minimum clearance >= 4.0 mm; review target >= 4.5 mm.
-- Front shielding is not reduced more than required.
+- U-catch intentionally crosses through a local Y-Z laser-cut opening into the lock zone.
+- Clearance is measured to the opening edges / remaining shield material.
+- Final measured minimum edge clearance >=4.0 mm; review target >=4.5 mm where practical.
+- Opening remains local and security shielding is preserved.
 - CAD-001 and CAD-002 remain unchanged and healthy.
 - No CAD-004 geometry is added.
 
