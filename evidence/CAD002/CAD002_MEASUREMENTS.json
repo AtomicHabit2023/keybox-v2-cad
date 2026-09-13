@@ -1,73 +1,247 @@
 {
   "task": "CAD-002",
+  "status": "READY_FOR_DESIGN_REVIEW",
+  "generatedUtc": "2026-09-13T03:23:32.262298+00:00",
+  "controllingDecision": "origin/main 1070e73 reviews/CAD-002_RESULT.md: CHANGES_REQUIRED",
   "fusionDocument": "KeyBox_V2_CAD002_UCatch",
   "units": "mm",
+  "acceptanceChecks": {
+    "plateWidth": 20.0,
+    "plateHeight": 34.5,
+    "plateThickness": 1.5,
+    "holeDiameters": [
+      4.199999999999999,
+      4.199999999999999
+    ],
+    "holeVerticalSpacing": 25.0,
+    "rodDiameters": [
+      3.000000000000007,
+      2.9999999999999893
+    ],
+    "legCenterSpacing": 14.000000000000004,
+    "rodOutsideWidth": 17.0,
+    "rodInsideClearSpacing": 11.0,
+    "loopProjection": 26.0,
+    "edgeInset": 5.0,
+    "legCentersShareZ": true
+  },
+  "allAcceptanceChecks": "PASS",
   "approvedDoorPreserved": {
     "component": "02_CAD001_MASTER_DOOR_FOLDS",
+    "revisionBefore": "947b7e2e-ea4f-4ad2-9d0f-8d0c880a28ae",
+    "revisionAfter": "947b7e2e-ea4f-4ad2-9d0f-8d0c880a28ae",
+    "localBounds": [
+      [
+        0.0,
+        0.0,
+        1.5
+      ],
+      [
+        87.5,
+        12.0,
+        48.5
+      ]
+    ],
     "bodyCount": 1,
     "featureCount": 10,
     "unhealthyFeatureCount": 0,
+    "isSheetMetal": true,
     "flatPatternPresent": true,
-    "formedEnvelope": {
-      "widthX": 87.5,
-      "depthY": 12.0,
-      "heightZ": 47.0,
-      "localBounds": {
-        "x": [0.0, 87.5],
-        "y": [0.0, 12.0],
-        "z": [1.5, 48.5]
-      }
-    }
+    "volumeMm3": 8023.005475978721,
+    "faceCount": 46,
+    "edgeCount": 100
   },
   "uCatch": {
     "component": "03_CAD002_XG07A_UCATCH",
-    "occurrenceTransformMatchesDoor": true,
-    "occurrenceTranslation": [550.0, 0.0, 0.0],
-    "isGroundedForStaticReview": true,
     "bodyCount": 4,
-    "plate": {
-      "widthX": 20.0,
-      "heightZ": 36.5,
-      "thicknessY": 1.5,
-      "localBounds": {
-        "x": [62.5, 82.5],
-        "y": [12.0, 13.5],
-        "z": [6.75, 43.25]
-      },
-      "center": [72.5, 12.75, 25.0]
+    "fullyConstrainedSketchCount": 6,
+    "features": [
+      [
+        "CAD002_PLATE_EXTRUDE",
+        0
+      ],
+      [
+        "CAD002_MOUNTING_HOLE_CUT_-1",
+        0
+      ],
+      [
+        "CAD002_MOUNTING_HOLE_CUT_1",
+        0
+      ],
+      [
+        "CAD002_LOOP_LEFT_EXTRUDE",
+        0
+      ],
+      [
+        "CAD002_LOOP_RIGHT_EXTRUDE",
+        0
+      ],
+      [
+        "CAD002_LOOP_BRIDGE_EXTRUDE",
+        0
+      ]
+    ],
+    "plateBounds": [
+      [
+        62.5,
+        12.0,
+        7.75
+      ],
+      [
+        82.5,
+        13.5,
+        42.25
+      ]
+    ],
+    "mountingHoleCenters": [
+      [
+        72.5,
+        12.0,
+        12.5
+      ],
+      [
+        72.5,
+        12.0,
+        37.5
+      ]
+    ],
+    "mountingHoleToleranceMm": 0.2,
+    "loopLegCenters": [
+      [
+        65.5,
+        13.5,
+        25.0
+      ],
+      [
+        79.5,
+        13.5,
+        25.0
+      ]
+    ],
+    "loopLegAxes": [
+      [
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0
+      ]
+    ],
+    "bodyBounds": {
+      "XG07A_CATCH_PLATE_20x34P5x1P5": [
+        [
+          62.5,
+          12.0,
+          7.75
+        ],
+        [
+          82.5,
+          13.5,
+          42.25
+        ]
+      ],
+      "XG07A_LOOP_LEG_LEFT": [
+        [
+          64.0,
+          13.5,
+          23.5
+        ],
+        [
+          67.0,
+          38.0,
+          26.5
+        ]
+      ],
+      "XG07A_LOOP_LEG_RIGHT": [
+        [
+          78.0,
+          13.5,
+          23.5
+        ],
+        [
+          81.0,
+          38.0,
+          26.5
+        ]
+      ],
+      "XG07A_LOOP_BRIDGE": [
+        [
+          65.5,
+          36.5,
+          23.5
+        ],
+        [
+          79.5,
+          39.5,
+          26.5
+        ]
+      ]
     },
-    "loop": {
-      "form": "round-rod U loop: two projecting legs plus distal bridge",
-      "rodDiameter": 3.0,
-      "projectionFromPlateOuterFace": 26.0,
-      "legCenterSpacing": 12.0,
-      "centerX": 72.5,
-      "centerZ": 25.0,
-      "plateOuterFaceY": 13.5,
-      "furthestY": 39.5
-    }
-  },
-  "placementRelativeToDoorAndFolds": {
-    "originalDoorEdgeReferenceX": 87.5,
-    "plateInwardEdgeReferenceX": 82.5,
-    "edgeInset": 5.0,
-    "plateOppositeEdgeX": 62.5,
-    "mountingSurface": "outer face of the 25 mm hidden return",
-    "returnOuterFaceY": 12.0,
-    "plateContactFaceY": 12.0,
-    "latchFirstFoldDepth": 12.0,
-    "latchReturnWidth": 25.0,
-    "verticalCenter": 25.0
+    "loopProjectionToleranceMm": 1,
+    "placement": {
+      "edgeReferenceX": 87.5,
+      "contactFaceY": 12.0,
+      "verticalCenterZ": 25.0,
+      "occurrenceTranslation": [
+        550.0,
+        0.0,
+        0.0
+      ],
+      "transformMatchesDoor": true,
+      "isGrounded": true
+    },
+    "functionalParameters": [
+      [
+        "UCATCH_PLATE_W",
+        "20 mm"
+      ],
+      [
+        "UCATCH_PLATE_H",
+        "34.5 mm"
+      ],
+      [
+        "UCATCH_PLATE_T",
+        "1.5 mm"
+      ],
+      [
+        "UCATCH_LOOP_PROJ",
+        "26 mm"
+      ],
+      [
+        "UCATCH_LOOP_D",
+        "3 mm"
+      ],
+      [
+        "UCATCH_LOOP_LEG_SPACING",
+        "14 mm"
+      ],
+      [
+        "UCATCH_PLATE_CENTER_Z",
+        "25 mm"
+      ],
+      [
+        "UCATCH_MOUNT_HOLE_D",
+        "4.2 mm"
+      ],
+      [
+        "UCATCH_MOUNT_HOLE_SPACING",
+        "25 mm"
+      ],
+      [
+        "UCATCH_PLATE_CENTER_X",
+        "DOOR_FACE_W - CATCH_EDGE_INSET - UCATCH_PLATE_W / 2"
+      ]
+    ]
   },
   "scopeChecks": {
     "staticClosedPositionOnly": true,
-    "motionOrSweepApprovalClaimed": false,
-    "blueShieldAdded": false,
-    "xg07aLockBodyAdded": false,
-    "redServiceWallAdded": false,
-    "shimAdded": false,
-    "hingeRodAdded": false,
-    "patternedCopiesAdded": false
+    "cad003Started": false,
+    "newShieldLockWallShimHingeRodOrPattern": false,
+    "motionStudyPerformed": false
   },
-  "reviewNote": "The supplied repository controls plate size, thickness, loop projection, edge inset, and the existing 3 mm loop-diameter parameter. The 12 mm loop leg-center spacing is explicitly provisional and requires design-authority confirmation against the physical or fully dimensioned XG-07A catch before fabrication use."
+  "deviations": [],
+  "representationNote": "Lightweight round-rod reference: two projecting cylinders plus distal transverse cylinder; no cosmetic weld detail or bend-end refinements added."
 }

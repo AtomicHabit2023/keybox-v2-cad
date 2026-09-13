@@ -1,33 +1,29 @@
-# CAD-002 evidence — real U-catch on approved door
+# CAD-002 corrected U-catch review evidence
 
-Fusion checkpoint: `KeyBox_V2_CAD002_UCatch`
+Status: READY_FOR_DESIGN_REVIEW
 
-## Built
+Controlling decision: reviews/CAD-002_RESULT.md, read from refreshed main at 1070e73 on 2026-09-13. This evidence supersedes the original CAD-002 package and its provisional spacing.
 
-- Preserved `02_CAD001_MASTER_DOOR_FOLDS` unchanged.
-- Added `03_CAD002_XG07A_UCATCH` as a separate grounded component for the static closed-position gate.
-- Modeled a 20.0 × 36.5 × 1.5 mm catch plate plus a round-rod U loop with two projecting legs and a distal bridge; this replaces the superseded crude single-block reference.
-- Mounted the plate on the outer face of the 25 mm hidden return. The plate spans local X = 62.5–82.5 mm, leaving the required 5.0 mm inset from the original door-edge reference at X = 87.5 mm.
-- Centered the 36.5 mm plate vertically at Z = 25.0 mm, giving Z = 6.75–43.25 mm.
-- Set the loop's furthest point 26.0 mm from the plate outer face.
+## Corrections and verification
 
-## Verification
+- Plate: 20.0 x 34.5 x 1.5 mm; local X 62.5-82.5, Y 12.0-13.5, Z 7.75-42.25 mm.
+- Two through-holes in the catch plate only: diameter 4.2 mm, vertical centers 25.0 mm apart (drawing tolerance +/-0.2 mm). Centers X 72.5, Z 12.5 and 37.5 mm. The approved door return was not drilled or modified.
+- Two diameter 3.0 mm projecting legs: centers X 65.5 and 79.5 mm, both at Z 25.0 mm; axes parallel to Y. Horizontal center spacing 14.0 mm, outside width 17.0 mm, inside clear spacing 11.0 mm.
+- Projection: 26.0 mm from plate outer face Y 13.5 to loop furthest Y 39.5 mm (drawing tolerance +/-1 mm).
+- Original edge inset remains 5.0 mm from door-edge reference X 87.5 to plate edge X 82.5 mm.
+- Catch occurrence transform matches the door at the original 550 mm X review offset and is grounded for static review.
+- Rebuilt only the catch using six fully constrained sketches and six healthy extrusion/cut features. Functional dimensions and offsets reference named parameters.
+- Door body revision is identical before and after correction: 947b7e2e-ea4f-4ad2-9d0f-8d0c880a28ae. Volume, 46 faces, 100 edges, one sheet-metal body, 10 healthy features, 87.5 x 12 x 47 mm bounds, and existing flat pattern are preserved.
+- The four-body purchased-hardware reference retains simple cylindrical legs and distal bridge. Cosmetic welds and detailed bend-end refinements are outside this correction.
 
-- CAD-001 door: one sheet-metal body, 10 unchanged healthy features, no unhealthy features, flat pattern still present.
-- Door formed envelope remains 87.5 × 12.0 × 47.0 mm.
-- Catch and door occurrence transforms match at the 550 mm review offset.
-- Static mounting contact is at Y = 12.0 mm on the hidden return.
-- No blue shield, lock body, red wall, shim, hinge rod, or patterned copies were added.
-- No motion or swept-envelope approval is claimed; that remains CAD-003.
+## Evidence
 
-## Evidence files
+- CAD002_front.png: plate front view from the compartment side (+Y looking toward -Y), with Z vertical; shows horizontal loop orientation and both mounting holes.
+- CAD002_top.png: view from +Z, showing loop projection and width.
+- CAD002_isometric.png: assembled view from the compartment side.
+- CAD002_MEASUREMENTS.json: fresh Fusion geometry measurements and acceptance assertions; all pass.
+- KeyBox_V2_CAD002_UCatch.f3d: corrected native Fusion checkpoint.
 
-- `CAD002_front.png`
-- `CAD002_top.png`
-- `CAD002_isometric.png`
-- `CAD002_MEASUREMENTS.json`
-- `KeyBox_V2_CAD002_UCatch.f3d`
+The three images were visually inspected after export. The saved Fusion document is KeyBox_V2_CAD002_UCatch.
 
-## Review item
-
-The repository supplies the plate dimensions, 26 mm loop projection, 5 mm inset, and the existing 3 mm loop-diameter parameter, but does not state the loop leg-center spacing. A provisional named parameter, `UCATCH_LOOP_LEG_SPACING = 12 mm`, is used and must be confirmed against the physical or fully dimensioned XG-07A catch before fabrication use.
+No provisional loop-spacing deviation remains. This is the static CAD-002 gate only. No shield, lock body, red wall, shim, hinge rod, motion study, or pattern was added. CAD-003 remains blocked pending design-authority approval.

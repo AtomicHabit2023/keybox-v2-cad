@@ -4,7 +4,7 @@
   "branch": "cad/CAD-002",
   "fusion_document": "KeyBox_V2_CAD002_UCatch",
   "head_sha": null,
-  "summary": "Preserved the approved CAD-001 sheet-metal door and added a separate grounded XG-07A catch component comprising a 20 x 36.5 x 1.5 mm plate and a round-rod U loop with 26 mm projection, mounted on the 25 mm hidden return at the required 5 mm inward edge inset.",
+  "summary": "Corrected CAD-002 per the design-authority result read from refreshed main at 1070e73: 20 x 34.5 x 1.5 mm plate, two diameter 4.2 mm mounting holes at 25 mm vertical centers, and horizontal diameter 3 mm loop legs at 14 mm centers. Preserved 26 mm projection, 5 mm edge inset, and the unchanged CAD-001 door.",
   "evidence": [
     "evidence/CAD002/CAD002_front.png",
     "evidence/CAD002/CAD002_top.png",
@@ -14,16 +14,16 @@
     "evidence/CAD002/KeyBox_V2_CAD002_UCatch.f3d"
   ],
   "checks": {
-    "sheet_metal_health": "PASS — CAD-001 door remains one body with 10 healthy features",
+    "sheet_metal_health": "PASS - CAD-001 body revision, volume, topology, 10 healthy features, and formed envelope unchanged",
     "interference": "NOT_APPLICABLE — CAD-002 is the static catch-only gate; intentional plate/return mounting contact is present",
-    "flat_pattern": "PASS — approved CAD-001 flat pattern remains present",
-    "static_placement": "PASS — plate on hidden return, 5 mm inset, 26 mm loop projection",
-    "swept_motion": "NOT_TESTED — reserved for CAD-003"
+    "flat_pattern": "PASS - approved CAD-001 flat pattern remains present",
+    "static_placement": "PASS - 5 mm inset, 26 mm projection, original 550 mm occurrence transform restored and verified",
+    "swept_motion": "NOT_TESTED — reserved for CAD-003",
+    "correction_dimensions": "PASS - 20 x 34.5 x 1.5 plate; two diameter 4.2 holes at 25 centers; horizontal diameter 3 rods at 14 centers, 17 outside, 11 clear",
+    "parametric_catch": "PASS - all six sketches fully constrained; six healthy extrusion/cut features driven by named functional parameters"
   },
-  "deviations": [
-    "UCATCH_LOOP_LEG_SPACING is set provisionally to 12 mm because that dimension is not stated in the repository source documents."
-  ],
-  "questions_for_design_authority": [
-    "Confirm or correct the provisional 12 mm U-catch loop leg-center spacing against the physical or fully dimensioned XG-07A catch before fabrication use."
-  ]
+  "deviations": [],
+  "questions_for_design_authority": [],
+  "controlling_decision": "reviews/CAD-002_RESULT.md on refreshed main 1070e73: CHANGES_REQUIRED",
+  "updated_utc": "2026-09-13T03:24:51.4199539Z"
 }
