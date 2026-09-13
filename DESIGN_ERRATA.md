@@ -85,3 +85,24 @@ Before any slot or sweep work, the raw un-notched L-shield must pass a visual/bo
 If any plate appears hundreds of millimetres long, hangs below the cell, rises above the row, or projects outside the 90 × 50 × 100 reference cell, placement/orientation is wrong and CAD-003 must stop before sweep analysis.
 
 Reason: visual review showed a large plate hanging outside the master cell after the transform-only correction, proving that transform equality alone does not guarantee matching local-axis orientation or correct in-context placement.
+
+## E-005 — Both shield legs are vertical; L-shape is seen in TOP view
+
+**Status: CONTROLLING**
+
+The latest raw-shield checkpoint is still wrong because the 25 mm front return was built as a **horizontal shelf/plate** and the side partition rises well beyond one row. This is a plane-orientation error.
+
+For the one-row CAD-003 master-cell reference:
+
+- Local physical axes are conceptual only: **width** across the 90 mm cell, **depth** from door/front to rear across 100 mm, and **height** between the 50 mm row boundaries.
+- The **side partition is vertical**: it spans compartment depth and row height. In the canonical coordinate convention it is a constant-X Y-Z plane.
+- The **front return is also vertical**: it spans the 25 mm lock-zone width and the same row height. In the canonical coordinate convention it is a constant-Y X-Z plane.
+- The 90° bend line between them is therefore **vertical / parallel to the row-height direction**.
+- Looking from the **TOP**, the two vertical plates form an `L` footprint.
+- Looking from the FRONT, the front return appears as a roughly 25 mm wide × 50 mm high vertical panel, not a horizontal shelf.
+- Looking from the SERVICE SIDE, the side partition appears as a depth × 50 mm high vertical panel.
+- For this placement gate, both legs must be bounded between the same actual bottom and top row faces. Neither leg may extend above or below the 50 mm row envelope.
+
+To remove any Fusion sheet-metal ambiguity, the next placement checkpoint may use **two simple 1.2 mm solid reference slabs** joined at a vertical corner: one side-partition slab and one front-return slab. Do not attempt a sheet-metal bend, slot, notch, or sweep until these two slabs visually form the correct vertical L inside the cell. The sheet-metal bend can be rebuilt after the placement/orientation gate is approved.
+
+Reason: the user-supplied Fusion checkpoint visibly shows a vertical plate paired with a horizontal shelf and excessive vertical extent. That cannot be the agreed protective L-shield, whose L is a plan/top-view shape made from two vertical faces.
