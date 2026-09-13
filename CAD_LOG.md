@@ -105,3 +105,16 @@ Stop after those folds are measured and visually verified. Do not add U-catch or
 - Saved the corrected Fusion document, exported the native archive, regenerated machine-readable measurements and front/top/isometric images, and visually inspected all three views.
 - Updated evidence/CAD002/README.md and handoff/CAD-002.json to READY_FOR_DESIGN_REVIEW with no provisional spacing deviation or outstanding measurement question.
 - Stopped at the CAD-002 review gate. CAD-003 and all subsequent geometry remain blocked pending authority approval.
+
+## 2026-09-13 — CAD-003 blue shield + U-catch sweep completed; ready for design review
+
+- Refreshed `main` through the KeyBox Git Bridge, read `AGENTS.md`, `CAD_TASKS.md`, `PARAMETERS.json`, and the controlling `reviews/CAD-003_RELEASE.md`, then created `cad/CAD-003`.
+- Saved the new Fusion checkpoint as `KeyBox_V2_CAD003_ShieldSweep` before CAD-003 geometry.
+- Preserved the approved CAD-001 door and CAD-002 catch unchanged. The door revision and healthy feature state remain intact; the flat pattern remains present.
+- Added only a lightweight 1.2 mm fixed blue-shield reference at local X = 50 mm, built as four web bodies around a sweep-derived 43 × 43 mm pass-through: Y = 24–67 mm, Z = 3.5–46.5 mm.
+- Used a lightweight vertical Z analysis axis at local X = 0 mm, Y = 0 mm. No hinge rod or final hinge hardware was modeled.
+- Created evidence-only copies of the approved U-catch at 0°, 15°, 30°, 45°, 60°, 75°, and 90°. Fusion temporary B-Rep measurements report shield clearances of 11.80053, 18.97414, 31.81678, 45.09251, 58.04749, 70.21240, and 81.28845 mm respectively.
+- The closest sampled approach is 11.80053 mm at 0°, exceeding the 4.0 mm required starting allowance. The relief is therefore driven by the moving sampled envelope, rather than static closed geometry.
+- Saved the Fusion document and exported the native archive. Generated front/top/isometric and all seven sweep-angle images, plus machine-readable measurements; visually checked representative views.
+- No XG-07A lock body, shim, red service wall, final/full hinge hardware, row/column pattern, or CAD-004 geometry was added.
+- Stop gate reached with `handoff/CAD-003.json` set to `READY_FOR_DESIGN_REVIEW`.

@@ -1,0 +1,35 @@
+{
+  "task": "CAD-003",
+  "status": "READY_FOR_DESIGN_REVIEW",
+  "branch": "cad/CAD-003",
+  "fusion_document": "KeyBox_V2_CAD003_ShieldSweep",
+  "head_sha": null,
+  "summary": "Added a lightweight fixed blue-shield reference with a sweep-derived 43 x 43 mm relief, and measured the approved U-catch through 0 to 90 degrees at seven angles. The closest sampled shield clearance is 11.80053 mm, exceeding the required 4.0 mm allowance.",
+  "evidence": [
+    "evidence/CAD003/CAD003_front.png",
+    "evidence/CAD003/CAD003_top.png",
+    "evidence/CAD003/CAD003_isometric.png",
+    "evidence/CAD003/CAD003_sweep_0deg.png",
+    "evidence/CAD003/CAD003_sweep_15deg.png",
+    "evidence/CAD003/CAD003_sweep_30deg.png",
+    "evidence/CAD003/CAD003_sweep_45deg.png",
+    "evidence/CAD003/CAD003_sweep_60deg.png",
+    "evidence/CAD003/CAD003_sweep_75deg.png",
+    "evidence/CAD003/CAD003_sweep_90deg.png",
+    "evidence/CAD003/CAD003_SWEEP_MEASUREMENTS.json",
+    "evidence/CAD003/README.md",
+    "evidence/CAD003/KeyBox_V2_CAD003_ShieldSweep.f3d"
+  ],
+  "checks": {
+    "sheet_metal_health": "PASS — approved CAD-001 door revision and all features remain unchanged and healthy; flat pattern remains present",
+    "interference": "PASS — exact temporary B-Rep sampled-angle measurement, 0 through 90 degrees at 15 degree steps",
+    "minimum_sampled_clearance_mm": 11.80053,
+    "minimum_clearance_angle_deg": 0,
+    "required_safety_allowance_mm": 4.0,
+    "shield_relief": "PASS — 43 x 43 mm local YZ opening derived conservatively from sampled sweep envelope plus allowance",
+    "flat_pattern": "PASS — existing CAD-001 flat pattern preserved",
+    "scope": "PASS — no lock body, shim, red wall, final hinge hardware, or patterned copies"
+  },
+  "deviations": [],
+  "questions_for_design_authority": []
+}
