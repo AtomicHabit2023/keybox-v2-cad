@@ -1,0 +1,73 @@
+{
+  "task": "CAD-002",
+  "fusionDocument": "KeyBox_V2_CAD002_UCatch",
+  "units": "mm",
+  "approvedDoorPreserved": {
+    "component": "02_CAD001_MASTER_DOOR_FOLDS",
+    "bodyCount": 1,
+    "featureCount": 10,
+    "unhealthyFeatureCount": 0,
+    "flatPatternPresent": true,
+    "formedEnvelope": {
+      "widthX": 87.5,
+      "depthY": 12.0,
+      "heightZ": 47.0,
+      "localBounds": {
+        "x": [0.0, 87.5],
+        "y": [0.0, 12.0],
+        "z": [1.5, 48.5]
+      }
+    }
+  },
+  "uCatch": {
+    "component": "03_CAD002_XG07A_UCATCH",
+    "occurrenceTransformMatchesDoor": true,
+    "occurrenceTranslation": [550.0, 0.0, 0.0],
+    "isGroundedForStaticReview": true,
+    "bodyCount": 4,
+    "plate": {
+      "widthX": 20.0,
+      "heightZ": 36.5,
+      "thicknessY": 1.5,
+      "localBounds": {
+        "x": [62.5, 82.5],
+        "y": [12.0, 13.5],
+        "z": [6.75, 43.25]
+      },
+      "center": [72.5, 12.75, 25.0]
+    },
+    "loop": {
+      "form": "round-rod U loop: two projecting legs plus distal bridge",
+      "rodDiameter": 3.0,
+      "projectionFromPlateOuterFace": 26.0,
+      "legCenterSpacing": 12.0,
+      "centerX": 72.5,
+      "centerZ": 25.0,
+      "plateOuterFaceY": 13.5,
+      "furthestY": 39.5
+    }
+  },
+  "placementRelativeToDoorAndFolds": {
+    "originalDoorEdgeReferenceX": 87.5,
+    "plateInwardEdgeReferenceX": 82.5,
+    "edgeInset": 5.0,
+    "plateOppositeEdgeX": 62.5,
+    "mountingSurface": "outer face of the 25 mm hidden return",
+    "returnOuterFaceY": 12.0,
+    "plateContactFaceY": 12.0,
+    "latchFirstFoldDepth": 12.0,
+    "latchReturnWidth": 25.0,
+    "verticalCenter": 25.0
+  },
+  "scopeChecks": {
+    "staticClosedPositionOnly": true,
+    "motionOrSweepApprovalClaimed": false,
+    "blueShieldAdded": false,
+    "xg07aLockBodyAdded": false,
+    "redServiceWallAdded": false,
+    "shimAdded": false,
+    "hingeRodAdded": false,
+    "patternedCopiesAdded": false
+  },
+  "reviewNote": "The supplied repository controls plate size, thickness, loop projection, edge inset, and the existing 3 mm loop-diameter parameter. The 12 mm loop leg-center spacing is explicitly provisional and requires design-authority confirmation against the physical or fully dimensioned XG-07A catch before fabrication use."
+}

@@ -78,3 +78,19 @@ Stop after those folds are measured and visually verified. Do not add U-catch or
 - Created the final review package at `evidence/CAD001_FINAL/`, including front, top, and isometric views; machine-readable measurements; notes; and the saved native `.f3d` checkpoint.
 - No Fusion geometry was modified while preparing the final evidence package.
 - CAD-002 remains blocked and was not started.
+
+## 2026-09-13 — CAD-002 real U-catch completed; ready for design review
+
+- Synchronized `main` after `reviews/CAD-001_RESULT.md` approved CAD-001 and explicitly released CAD-002.
+- Created task branch `cad/CAD-002` and saved a separate Fusion checkpoint as `KeyBox_V2_CAD002_UCatch`, preserving the approved CAD-001 document and door geometry.
+- Preserved `02_CAD001_MASTER_DOOR_FOLDS` as one unchanged sheet-metal body with 10 healthy features and its flat pattern present.
+- Added `03_CAD002_XG07A_UCATCH` as a separate grounded component at the same 550 mm occurrence transform as the approved door.
+- Modeled the catch as a 20.0 × 36.5 × 1.5 mm plate plus a round 3.0 mm rod U loop made from two projecting legs and a distal bridge, rather than the superseded crude bounding block.
+- Mounted the plate on the outer face of the 25 mm hidden return. Local plate bounds are X = 62.5–82.5 mm, Y = 12.0–13.5 mm, and Z = 6.75–43.25 mm.
+- Verified the approved 5.0 mm inward inset from the original door-edge reference at X = 87.5 mm to the plate edge at X = 82.5 mm.
+- Verified the loop's furthest point projects 26.0 mm from the plate outer face, from Y = 13.5 mm to Y = 39.5 mm.
+- Added named parameter `UCATCH_LOOP_LEG_SPACING = 12 mm` as an explicitly provisional dimension because the repository does not state the physical catch's leg-center spacing; design-authority confirmation is requested before fabrication use.
+- Generated fresh front, top, and isometric screenshots, machine-readable measurements, notes, and a native `.f3d` checkpoint under `evidence/CAD002/`.
+- Did not add a blue shield, XG-07A lock body, red service wall, shim, hinge rod, or patterned copies.
+- Did not perform or claim swept-motion approval; that work remains CAD-003.
+- Stop gate reached with `handoff/CAD-002.json` set to `READY_FOR_DESIGN_REVIEW`.
