@@ -57,3 +57,31 @@ All CAD-003 geometry belonging to the master cell must use the **same occurrence
 - CAD-003 must not claim `READY_FOR_DESIGN_REVIEW` until both the isolated shield view and combined master-cell view confirm correct physical placement.
 
 Reason: the latest L-shield rebuild reports local X=65 mm but the Fusion view shows the new shield geometry physically separated from the approved door/catch, consistent with a root/local occurrence-transform mismatch.
+
+## E-004 — CAD-003 must be anchored to physical master-cell faces
+
+**Status: CONTROLLING**
+
+The latest placement attempt still produces grossly incorrect geometry even after copying the +550 mm occurrence transform. Therefore CAD-003 must stop relying on assumed X/Y/Z orientation or copied transforms as the primary placement method.
+
+Use the **actual visible faces of the approved 90 × 50 × 100 mm master-cell reference** as the construction datum:
+
+- Identify the **front face** physically by the approved door location.
+- Identify the **service-side face** physically by the approved U-catch/latch side.
+- Identify the **rear face** as the face 100 mm behind the front face.
+- Identify the **top and bottom row faces** as the 50 mm row-height boundaries.
+- Define the blue-shield side partition as a plane **25.0 mm inward from the actual service-side cell face**. This is physically equivalent to the intended 65/25 mm split, regardless of global axis naming.
+- The shield side leg must be bounded by the actual top/bottom row faces and by the actual rear face. No shield material may extend above, below, outside the service-side face, or beyond the rear of the master cell except the nominal 1.2 mm sheet thickness/bend envelope.
+- Create the front return from the side-partition leading edge **toward the actual service-side face** for a nominal 25 mm span. Do not infer its direction from a global X sign.
+- Use the approved door/U-catch geometry itself to establish which side of the return faces the closing catch.
+
+Before any slot or sweep work, the raw un-notched L-shield must pass a visual/bounding-box gate:
+
+- overall row height ≈ 50 mm maximum;
+- width occupied across the lock zone ≈ 25 mm maximum plus bend/sheet envelope;
+- depth of the side leg ≤ 100 mm and equals rear-face minus front-setback;
+- the entire L-shield sits inside the one physical master cell next to the U-catch.
+
+If any plate appears hundreds of millimetres long, hangs below the cell, rises above the row, or projects outside the 90 × 50 × 100 reference cell, placement/orientation is wrong and CAD-003 must stop before sweep analysis.
+
+Reason: visual review showed a large plate hanging outside the master cell after the transform-only correction, proving that transform equality alone does not guarantee matching local-axis orientation or correct in-context placement.
