@@ -134,3 +134,10 @@ Stop after those folds are measured and visually verified. Do not add U-catch or
 - Adjusted only BLUE_SHIELD_FRONT_SETBACK along +Y by 1.1 mm to Y = 1.1 mm, meeting the 4.5 mm review target.
 - The seven-angle record has a governing clearance of 4.50037 mm at 0°; all remaining samples are greater.
 - No CAD-004 geometry was added. Updated machine-readable evidence, handoff, and native Fusion checkpoint for review.
+
+## 2026-09-13 — CAD-003 L-section shield rebuild; ready for design review
+
+- Replaced only the rejected CAD-003 frame geometry with a lightweight 1.2 mm L-section reference.
+- The long side partition is on X = 65 mm from Y = 40 mm toward Y = 100 mm. The short front return spans X = 65–90 mm at Y = 40 mm.
+- Added a local horizontal front-return notch at Z = 18–32 mm, open to the side-partition bend edge as allowed by E-002.
+- Preserved frozen local hinge axis X = 5 mm, Y = 5 mm, Z direction and the approved door/U-catch. Generated isolated full-shield, front/top/isometric, and seven sweep views; no CAD-004 geometry was added.

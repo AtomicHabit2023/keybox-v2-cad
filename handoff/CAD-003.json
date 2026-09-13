@@ -4,7 +4,7 @@
   "branch": "cad/CAD-003",
   "fusion_document": "KeyBox_V2_CAD003_ShieldSweep",
   "head_sha": null,
-  "summary": "Final CAD-003 fine-tune keeps the X=65 mm partition and frozen 5/5 mm Z-axis. BLUE_SHIELD_FRONT_SETBACK moved 1.1 mm rearward to Y=1.1 mm; the governing clearance is 4.50037 mm.",
+  "summary": "Rebuilt CAD-003 as the controlling 1.2 mm L-section: long X=65 side partition from Y=40 to 100 mm plus a 25 mm front return with a horizontal U-catch notch.",
   "evidence": [
     "evidence/CAD003/CAD003_front.png",
     "evidence/CAD003/CAD003_top.png",
@@ -18,7 +18,8 @@
     "evidence/CAD003/CAD003_sweep_90deg.png",
     "evidence/CAD003/CAD003_SWEEP_MEASUREMENTS.json",
     "evidence/CAD003/README.md",
-    "evidence/CAD003/KeyBox_V2_CAD003_ShieldSweep_FINAL.f3d"
+    "evidence/CAD003/CAD003_shield_isolated.png",
+    "evidence/CAD003/KeyBox_V2_CAD003_LShield.f3d"
   ],
   "checks": {
     "sheet_metal_health": "PASS — approved CAD-001 door revision and all features remain unchanged and healthy; flat pattern remains present",

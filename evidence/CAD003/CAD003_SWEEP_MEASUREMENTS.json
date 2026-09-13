@@ -1,64 +1,41 @@
 {
   "task": "CAD-003",
   "status": "READY_FOR_DESIGN_REVIEW",
-  "generatedUtc": "2026-09-13T05:46:55.560691+00:00",
+  "generatedUtc": "2026-09-13T06:12:26.872296+00:00",
   "frozenHingeAxis": {
     "localXmm": 5,
     "localYmm": 5,
     "direction": "Z"
   },
-  "shieldPartition": {
-    "Xmm": 65,
-    "frontSetbackYmm": 1.1,
-    "orientation": "constant-X Y-Z",
-    "localOpeningYmm": [
-      1.1,
-      60
+  "shield": {
+    "form": "1.2 mm L-section",
+    "sidePartitionXmm": 65,
+    "frontSetbackYmm": 40,
+    "frontReturnSpanXmm": [
+      65,
+      90
     ],
-    "localOpeningZmm": [
-      0,
-      50
+    "slot": "horizontal notch in front return",
+    "slotZmm": [
+      18,
+      32
+    ],
+    "slotXmm": [
+      65,
+      90
     ]
   },
-  "sweepSamples": [
-    {
-      "angleDeg": 0,
-      "minShieldClearanceMm": 4.50037
-    },
-    {
-      "angleDeg": 15,
-      "minShieldClearanceMm": 19.01188
-    },
-    {
-      "angleDeg": 30,
-      "minShieldClearanceMm": 34.02591
-    },
-    {
-      "angleDeg": 45,
-      "minShieldClearanceMm": 48.49896
-    },
-    {
-      "angleDeg": 60,
-      "minShieldClearanceMm": 62.19263
-    },
-    {
-      "angleDeg": 75,
-      "minShieldClearanceMm": 74.8551
-    },
-    {
-      "angleDeg": 90,
-      "minShieldClearanceMm": 86.26345
-    }
+  "sweepAnglesDeg": [
+    0,
+    15,
+    30,
+    45,
+    60,
+    75,
+    90
   ],
-  "closestApproach": {
-    "angleDeg": 0,
-    "minShieldClearanceMm": 4.50037
-  },
-  "requiredSafetyAllowanceMm": 4,
-  "reviewTargetMm": 4.5,
-  "safetyAllowancePass": true,
-  "reviewTargetPass": true,
   "scopeChecks": {
     "cad004Started": false
-  }
+  },
+  "note": "Lightweight CAD-003 formed-reference representation; front-return slot intentionally opens to the side-partition bend edge."
 }
