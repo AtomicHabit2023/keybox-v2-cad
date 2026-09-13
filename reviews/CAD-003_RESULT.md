@@ -12,6 +12,14 @@ The governing 4.0 mm clearance is the minimum distance between the moving U-catc
 
 If the reported 3.40037 mm was measured to an uncut/full shield slab at a location where the U-catch is supposed to pass through, that is not a valid acceptance measurement and must not be solved merely by moving the shield backward. First model/confirm the intended local pass-through relief, then measure clearance to its edges.
 
+## Latest pushed fine-tune is superseded
+
+Commit `ef675e4` / the 1.1 mm setback fine-tune was produced **before** the design-authority clarification above and is not accepted as CAD-003 approval evidence.
+
+Its evidence is internally inconsistent/stale: the handoff still carries superseded constant-Y / 119 x 43 mm shield-check text, while the machine-readable file reports a constant-X partition with an opening spanning approximately `Y = 1.1..60 mm` and `Z = 0..50 mm`. That is not yet a demonstrated **local** U-catch pass-through with clearance measured to its boundary.
+
+Do not merge or approve that result. Re-run only the local opening-edge verification described below.
+
 ## Frozen geometry — do not change
 
 - `HINGE_AXIS_EDGE_OFFSET = 5.0 mm`.
