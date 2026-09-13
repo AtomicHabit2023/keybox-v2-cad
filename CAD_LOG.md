@@ -118,3 +118,12 @@ Stop after those folds are measured and visually verified. Do not add U-catch or
 - Saved the Fusion document and exported the native archive. Generated front/top/isometric and all seven sweep-angle images, plus machine-readable measurements; visually checked representative views.
 - No XG-07A lock body, shim, red service wall, final/full hinge hardware, row/column pattern, or CAD-004 geometry was added.
 - Stop gate reached with `handoff/CAD-003.json` set to `READY_FOR_DESIGN_REVIEW`.
+
+## 2026-09-13 — CAD-003 frozen-axis constant-Y shield rerun; ready for design review
+
+- Refreshed main and followed the controlling CAD-003 correction: frozen local hinge axis X = 5.0 mm, Y = 5.0 mm, Z direction.
+- Replaced only the CAD-003 analysis geometry. The blue shield front is now a constant-Y X-Z face at Y = 43.5 mm, rather than the superseded constant-X side-plane interpretation.
+- Used the sampled moving U-catch envelope to set a 119 × 43 mm X-Z relief: X = −39–80 mm and Z = 3.5–46.5 mm.
+- Re-ran exact Fusion temporary-B-Rep samples at 0°, 15°, 30°, 45°, 60°, 75°, and 90°. Measured shield clearance is 58.69364, 49.18057, 40.72311, 31.55066, 22.71020, 18.33444, and 18.01118 mm respectively. The 90° minimum exceeds the 4.0 mm allowance.
+- Preserved the CAD-001 door and CAD-002 U-catch unchanged and healthy. No CAD-004 geometry was added.
+- Regenerated review views, all seven sweep views, machine-readable measurements, handoff, and the corrected native Fusion archive checkpoint.

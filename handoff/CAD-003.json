@@ -4,7 +4,7 @@
   "branch": "cad/CAD-003",
   "fusion_document": "KeyBox_V2_CAD003_ShieldSweep",
   "head_sha": null,
-  "summary": "Added a lightweight fixed blue-shield reference with a sweep-derived 43 x 43 mm relief, and measured the approved U-catch through 0 to 90 degrees at seven angles. The closest sampled shield clearance is 11.80053 mm, exceeding the required 4.0 mm allowance.",
+  "summary": "Corrected CAD-003 with the frozen X=5.0 mm, Y=5.0 mm Z-axis and a constant-Y X-Z shield front at Y=43.5 mm. The rerun 0–90 degree sweep uses a 119 x 43 mm sampled-envelope relief; closest sampled clearance is 18.011177 mm at 90 degrees.",
   "evidence": [
     "evidence/CAD003/CAD003_front.png",
     "evidence/CAD003/CAD003_top.png",
@@ -18,15 +18,17 @@
     "evidence/CAD003/CAD003_sweep_90deg.png",
     "evidence/CAD003/CAD003_SWEEP_MEASUREMENTS.json",
     "evidence/CAD003/README.md",
-    "evidence/CAD003/KeyBox_V2_CAD003_ShieldSweep.f3d"
+    "evidence/CAD003/KeyBox_V2_CAD003_ShieldSweep_RERUN.f3d"
   ],
   "checks": {
     "sheet_metal_health": "PASS — approved CAD-001 door revision and all features remain unchanged and healthy; flat pattern remains present",
     "interference": "PASS — exact temporary B-Rep sampled-angle measurement, 0 through 90 degrees at 15 degree steps",
-    "minimum_sampled_clearance_mm": 11.80053,
-    "minimum_clearance_angle_deg": 0,
+    "minimum_sampled_clearance_mm": 18.011177,
+    "minimum_clearance_angle_deg": 90,
     "required_safety_allowance_mm": 4.0,
-    "shield_relief": "PASS — 43 x 43 mm local YZ opening derived conservatively from sampled sweep envelope plus allowance",
+    "frozen_hinge_axis": "PASS — local X=5.0 mm, Y=5.0 mm, Z direction",
+    "shield_front": "PASS — constant-Y X-Z face at Y=43.5 mm",
+    "shield_relief": "PASS — 119 x 43 mm local XZ opening derived conservatively from sampled sweep envelope plus allowance",
     "flat_pattern": "PASS — existing CAD-001 flat pattern preserved",
     "scope": "PASS — no lock body, shim, red wall, final hinge hardware, or patterned copies"
   },
