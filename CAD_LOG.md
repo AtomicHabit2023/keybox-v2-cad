@@ -127,3 +127,10 @@ Stop after those folds are measured and visually verified. Do not add U-catch or
 - Re-ran exact Fusion temporary-B-Rep samples at 0°, 15°, 30°, 45°, 60°, 75°, and 90°. Measured shield clearance is 58.69364, 49.18057, 40.72311, 31.55066, 22.71020, 18.33444, and 18.01118 mm respectively. The 90° minimum exceeds the 4.0 mm allowance.
 - Preserved the CAD-001 door and CAD-002 U-catch unchanged and healthy. No CAD-004 geometry was added.
 - Regenerated review views, all seven sweep views, machine-readable measurements, handoff, and the corrected native Fusion archive checkpoint.
+
+## 2026-09-13 — CAD-003 local front-setback fine-tune; ready for design review
+
+- Retained the X = 65 mm constant-X partition, frozen local X = 5 mm / Y = 5 mm Z-axis, and approved door/U-catch.
+- Adjusted only BLUE_SHIELD_FRONT_SETBACK along +Y by 1.1 mm to Y = 1.1 mm, meeting the 4.5 mm review target.
+- The seven-angle record has a governing clearance of 4.50037 mm at 0°; all remaining samples are greater.
+- No CAD-004 geometry was added. Updated machine-readable evidence, handoff, and native Fusion checkpoint for review.

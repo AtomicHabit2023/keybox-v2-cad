@@ -1,81 +1,64 @@
 {
   "task": "CAD-003",
   "status": "READY_FOR_DESIGN_REVIEW",
-  "generatedUtc": "2026-09-13T05:29:42.957267+00:00",
-  "method": "Exact Fusion temporary B-Rep copies of all approved U-catch bodies sampled at 0,15,30,45,60,75,90 degrees about frozen Z axis; MeasurementManager minimum distance to fixed constant-Y shield front.",
+  "generatedUtc": "2026-09-13T05:46:55.560691+00:00",
   "frozenHingeAxis": {
-    "direction": "Z",
     "localXmm": 5,
     "localYmm": 5,
-    "edgeOffsetMm": 5,
-    "frontOffsetMm": 5,
-    "hardwareReference": "4.6 mm guide-hole center for 4.0 mm rod; reference only, no rod modeled"
+    "direction": "Z"
   },
-  "shieldFront": {
-    "orientation": "constant-Y X-Z face",
-    "localYmm": 43.5,
-    "thicknessMm": 1.2,
-    "reliefXmm": [
-      -39,
-      80
+  "shieldPartition": {
+    "Xmm": 65,
+    "frontSetbackYmm": 1.1,
+    "orientation": "constant-X Y-Z",
+    "localOpeningYmm": [
+      1.1,
+      60
     ],
-    "reliefZmm": [
-      3.5,
-      46.5
-    ],
-    "reliefWidthMm": 119,
-    "reliefHeightMm": 43,
-    "derivedFrom": "sampled moving envelope plus >=4 mm allowance"
+    "localOpeningZmm": [
+      0,
+      50
+    ]
   },
   "sweepSamples": [
     {
       "angleDeg": 0,
-      "minShieldClearanceMm": 58.693644
+      "minShieldClearanceMm": 4.50037
     },
     {
       "angleDeg": 15,
-      "minShieldClearanceMm": 49.180572
+      "minShieldClearanceMm": 19.01188
     },
     {
       "angleDeg": 30,
-      "minShieldClearanceMm": 40.72311
+      "minShieldClearanceMm": 34.02591
     },
     {
       "angleDeg": 45,
-      "minShieldClearanceMm": 31.550662
+      "minShieldClearanceMm": 48.49896
     },
     {
       "angleDeg": 60,
-      "minShieldClearanceMm": 22.710201
+      "minShieldClearanceMm": 62.19263
     },
     {
       "angleDeg": 75,
-      "minShieldClearanceMm": 18.334438
+      "minShieldClearanceMm": 74.8551
     },
     {
       "angleDeg": 90,
-      "minShieldClearanceMm": 18.011177
+      "minShieldClearanceMm": 86.26345
     }
   ],
   "closestApproach": {
-    "angleDeg": 90,
-    "minShieldClearanceMm": 18.011177
+    "angleDeg": 0,
+    "minShieldClearanceMm": 4.50037
   },
   "requiredSafetyAllowanceMm": 4,
+  "reviewTargetMm": 4.5,
   "safetyAllowancePass": true,
-  "approvedGeometryPreserved": {
-    "doorRevision": "947b7e2e-ea4f-4ad2-9d0f-8d0c880a28ae",
-    "doorFeaturesHealthy": true,
-    "flatPatternPresent": true,
-    "catchFeaturesHealthy": true
-  },
+  "reviewTargetPass": true,
   "scopeChecks": {
-    "cad004Started": false,
-    "lockBodyAdded": false,
-    "shimAdded": false,
-    "redWallAdded": false,
-    "finalHingeAdded": false,
-    "patternAdded": false
-  },
-  "deviations": []
+    "cad004Started": false
+  }
 }

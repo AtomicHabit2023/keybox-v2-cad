@@ -4,7 +4,7 @@
   "branch": "cad/CAD-003",
   "fusion_document": "KeyBox_V2_CAD003_ShieldSweep",
   "head_sha": null,
-  "summary": "Corrected CAD-003 with the frozen X=5.0 mm, Y=5.0 mm Z-axis and a constant-Y X-Z shield front at Y=43.5 mm. The rerun 0–90 degree sweep uses a 119 x 43 mm sampled-envelope relief; closest sampled clearance is 18.011177 mm at 90 degrees.",
+  "summary": "Final CAD-003 fine-tune keeps the X=65 mm partition and frozen 5/5 mm Z-axis. BLUE_SHIELD_FRONT_SETBACK moved 1.1 mm rearward to Y=1.1 mm; the governing clearance is 4.50037 mm.",
   "evidence": [
     "evidence/CAD003/CAD003_front.png",
     "evidence/CAD003/CAD003_top.png",
@@ -18,13 +18,13 @@
     "evidence/CAD003/CAD003_sweep_90deg.png",
     "evidence/CAD003/CAD003_SWEEP_MEASUREMENTS.json",
     "evidence/CAD003/README.md",
-    "evidence/CAD003/KeyBox_V2_CAD003_ShieldSweep_RERUN.f3d"
+    "evidence/CAD003/KeyBox_V2_CAD003_ShieldSweep_FINAL.f3d"
   ],
   "checks": {
     "sheet_metal_health": "PASS — approved CAD-001 door revision and all features remain unchanged and healthy; flat pattern remains present",
     "interference": "PASS — exact temporary B-Rep sampled-angle measurement, 0 through 90 degrees at 15 degree steps",
-    "minimum_sampled_clearance_mm": 18.011177,
-    "minimum_clearance_angle_deg": 90,
+    "minimum_sampled_clearance_mm": 4.50037,
+    "minimum_clearance_angle_deg": 0,
     "required_safety_allowance_mm": 4.0,
     "frozen_hinge_axis": "PASS — local X=5.0 mm, Y=5.0 mm, Z direction",
     "shield_front": "PASS — constant-Y X-Z face at Y=43.5 mm",
