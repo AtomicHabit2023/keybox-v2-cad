@@ -45,7 +45,7 @@ See `reviews/CAD-002_RESULT.md` for the controlling approval.
 
 ## CAD-003 — Blue shield + true U-catch sweep
 
-**Status:** READY / RELEASED
+**Status:** HUMAN DECISION REQUIRED — see `reviews/CAD-003_RESULT.md`
 
 ### Scope
 
@@ -57,17 +57,26 @@ See `reviews/CAD-002_RESULT.md` for the controlling approval.
 - Keep the shield parametric and fabrication-friendly; avoid unnecessary detail.
 - Record the minimum-clearance location and value across the motion sweep.
 
+### Current hold
+
+The first CAD-003 submission is not accepted as the physical sweep because:
+
+- the shield front was modeled as a constant-X Y-Z plane instead of the required constant-Y X-Z front pass-through plane; and
+- the sweep used an unfrozen Z hinge axis at local X=0, Y=0 while the actual hinge-axis edge/front offsets remain TBD.
+
+The owner/design authority must freeze the hinge-axis offsets before the corrected CAD-003 rerun. The recommended starting values are 5.0 mm from the hinge-side edge and 5.0 mm behind the front-face plane; see `reviews/CAD-003_RESULT.md`.
+
 ### Do not build yet
 
 - XG-07A lock body.
 - Shim.
 - Red service wall.
-- Hinge rod / full hinge system beyond any lightweight reference needed for the motion axis.
+- Final/full hinge hardware beyond the lightweight axis/reference needed for the corrected motion study.
 - Patterned rows or columns.
 
 ### Stop gate / evidence
 
-Save a new Fusion checkpoint; provide front/top/isometric views plus motion/interference evidence showing the sweep at representative angles and the measured minimum clearance; update `CAD_LOG.md`; create `handoff/CAD-003.json` with `READY_FOR_DESIGN_REVIEW`; push branch `cad/CAD-003`; stop for design-authority review.
+After the hinge-axis decision, correct only CAD-003. Save a new Fusion checkpoint; provide front/top/isometric views plus motion/interference evidence showing the corrected sweep at representative angles and the measured minimum clearance; update `CAD_LOG.md`; update `handoff/CAD-003.json` with `READY_FOR_DESIGN_REVIEW`; push branch `cad/CAD-003`; stop for design-authority review.
 
 ---
 
