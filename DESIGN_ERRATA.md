@@ -42,3 +42,18 @@ Rejected interpretations:
 - measuring the catch only against an uncut side-partition plane where it is intended to cross the front return.
 
 Reason: the physical design intent is a continuous protective partition with a short front cap/return over the 25 mm lock zone. The U-catch crosses that front cap through a localized laser-cut slot on its way into the XG-07A hook.
+
+## E-003 — Master-cell occurrence transform / physical placement
+
+**Status: CONTROLLING**
+
+All CAD-003 geometry belonging to the master cell must use the **same occurrence transform as the approved CAD-001 door and CAD-002 U-catch**.
+
+- The approved CAD-001 door and CAD-002 U-catch are both placed at the existing **+550 mm review/master-cell X occurrence transform**.
+- Dimensions such as `BLUE_SHIELD_PARTITION_X = 65 mm` are **local master-cell dimensions**, not root/global Fusion-document coordinates.
+- The blue shield must therefore be created inside, or transformed with, the same master-cell occurrence frame so that its local X=65 mm plane physically sits beside the approved door and U-catch.
+- A shield built at root/global X=65 mm while the door/catch remain at the +550 mm occurrence is invalid even if the shield's local dimensions are numerically correct.
+- Before any sweep or clearance work, show one combined isometric view with only the approved door, approved U-catch, reference cell, and blue shield visible. The shield must visibly occupy the intended 25 mm lock zone in the **same cell** as the catch.
+- CAD-003 must not claim `READY_FOR_DESIGN_REVIEW` until both the isolated shield view and combined master-cell view confirm correct physical placement.
+
+Reason: the latest L-shield rebuild reports local X=65 mm but the Fusion view shows the new shield geometry physically separated from the approved door/catch, consistent with a root/local occurrence-transform mismatch.
