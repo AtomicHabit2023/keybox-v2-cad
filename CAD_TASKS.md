@@ -25,44 +25,49 @@ See `reviews/CAD-001_RESULT.md` for the controlling approval.
 
 ## CAD-002 — Real U-catch on approved door
 
-**Status:** CHANGES REQUIRED — see `reviews/CAD-002_RESULT.md`
+**Status:** APPROVED
 
-### Scope
+### Approved geometry
 
 - Preserve the approved CAD-001 sheet-metal door unchanged.
-- Model the actual XG-07A U-catch from the supplied dimensions, not a bounding block.
-- Correct catch plate: **20.0 × 34.5 × 1.5 mm**.
+- Catch plate: **20.0 × 34.5 × 1.5 mm**.
 - Two catch mounting holes: **Ø4.2 mm**, **25.0 ±0.2 mm** vertical center-to-center.
 - U-loop rod diameter: **3.0 mm**.
-- Two projecting U-loop legs are arranged **horizontally left-right in plate front view**, not vertically.
+- Two projecting U-loop legs arranged **horizontally left-right in plate front view**.
 - Owner-measured rod outside-to-outside width: **17.0 mm**, giving **14.0 mm center-to-center** and **11.0 mm inside clear spacing**.
 - Catch loop projection: **26 ±1 mm** from the plate.
-- Mount the catch on the 25 mm hidden return with the approved **5 mm inward edge inset**.
-- Verify static closed-position geometry and record exact catch placement relative to the door/folds.
-- Keep the model parametric where repeated/functional dimensions are involved.
+- Catch mounted on the 25 mm hidden return with the approved **5.0 mm inward edge inset**.
+- Approved door remains unchanged and healthy.
 
-### Do not build yet
-
-- Blue shield.
-- XG-07A lock body.
-- Red service wall.
-- Shim.
-- Hinge rod.
-- Patterned rows or columns.
-
-### Stop gate / evidence
-
-Correct only CAD-002. Save the Fusion checkpoint; provide fresh front/top/isometric views and machine-readable catch dimensions/placement; update `CAD_LOG.md`; update `handoff/CAD-002.json` with `READY_FOR_DESIGN_REVIEW`; push branch `cad/CAD-002`; stop for design-authority review.
-
-Static fit in CAD-002 does **not** approve the moving sweep. Full U-catch swept-envelope validation belongs to CAD-003.
+See `reviews/CAD-002_RESULT.md` for the controlling approval.
 
 ---
 
 ## CAD-003 — Blue shield + true U-catch sweep
 
-**Status:** BLOCKED by CAD-002 approval
+**Status:** READY / RELEASED
 
-Planned scope: add blue shield geometry, rotate door through operational range, calculate/check real swept envelope, and create only the minimum pass-through/relief needed with starting 4 mm safety allowance.
+### Scope
+
+- Preserve the approved CAD-001 door and approved CAD-002 U-catch unchanged.
+- Add the blue protective shield geometry only to the level required to evaluate the catch path and tenant anti-tamper protection.
+- Rotate the door through its operational opening/closing range and calculate/check the real U-catch swept envelope.
+- Design the shield front pass-through / relief from the moving swept envelope, not only the final closed position.
+- Use a **starting 4 mm safety allowance** at the closest moving approach to account for coating, bend tolerance, hinge play, and assembly variation.
+- Keep the shield parametric and fabrication-friendly; avoid unnecessary detail.
+- Record the minimum-clearance location and value across the motion sweep.
+
+### Do not build yet
+
+- XG-07A lock body.
+- Shim.
+- Red service wall.
+- Hinge rod / full hinge system beyond any lightweight reference needed for the motion axis.
+- Patterned rows or columns.
+
+### Stop gate / evidence
+
+Save a new Fusion checkpoint; provide front/top/isometric views plus motion/interference evidence showing the sweep at representative angles and the measured minimum clearance; update `CAD_LOG.md`; create `handoff/CAD-003.json` with `READY_FOR_DESIGN_REVIEW`; push branch `cad/CAD-003`; stop for design-authority review.
 
 ---
 
