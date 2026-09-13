@@ -4,9 +4,15 @@ STATUS: CHANGES_REQUIRED
 
 ## Decision
 
-Owner visual review of the isolated `04_CAD003_BLUE_SHIELD...` component confirms the current CAD-003 shield representation is physically wrong. It appears as a small freestanding rectangular frame around an opening. That is **not** the agreed shield architecture and must not be refined further.
+Owner visual review of the latest Fusion model confirms the rebuilt L-shield is still physically wrong **in placement**, even though Codex reports the intended local L-section dimensions.
 
-The earlier 3.40037 mm opening-edge result is therefore not an approval path for the current geometry. Rebuild the shield reference first, then repeat the sweep/clearance study against the correct formed shield.
+The most likely failure is a coordinate-frame / occurrence-transform mismatch:
+
+- the approved CAD-001 door and CAD-002 U-catch are placed at the established **+550 mm master-cell review occurrence transform**;
+- the latest CAD-003 log describes the shield only at local/root `X = 65 mm` and does not confirm the same +550 mm occurrence transform;
+- in Fusion, the new shield geometry appears physically separated from the approved door/catch instead of occupying the same master cell.
+
+Therefore the current sweep and clearance evidence is invalid regardless of the reported local dimensions. Correct physical placement must be proven **before** any further sweep tuning.
 
 ## Frozen geometry — do not change
 
@@ -16,45 +22,38 @@ The earlier 3.40037 mm opening-edge result is therefore not an approval path for
 - CAD-001 door and CAD-002 U-catch remain unchanged.
 - Tenant key-space allocation = 65 mm.
 - Lock/shield-zone allocation = 25 mm.
+- Physical shield form remains the E-002 L-section: long side partition + short front return/cap + local U-catch slot.
 
-## Correct physical blue-shield architecture
+## Required correction — placement first, sweep later
 
-The blue shield is a formed **L-section**:
-
-1. **Long side partition** — 1.2 mm sheet on the constant-X Y-Z plane at nominal `X = 65 mm`, extending rearward from a CAD-derived front leading edge toward the compartment rear (`Y ≈ 100 mm` in the one-row master-cell reference).
-2. **Short front return / cap** — at that leading edge the sheet bends approximately 90° toward the service-channel side, making a constant-Y X-Z front face across the 25 mm lock zone, nominally from X≈65 to X≈90 mm for CAD-003 reference purposes.
-3. **U-catch pass-through** — a local horizontal laser-cut slot/notch belongs in this **front return/cap**, because the closing U-catch must cross that face to enter the protected lock zone and engage the XG-07A hook.
-4. The long side partition should remain substantially solid. Only the minimum bend/transition relief proven necessary by the real sweep is permitted.
-5. The slot/notch may open into the side-partition/bend edge if the true sweep demands it. Do not force a closed rectangular window if that creates collision or removes unnecessary shielding.
-
-The rejected component consisting only of small web bodies around the opening is not the blue shield.
-
-## Required CAD-003 rebuild
-
-1. Delete/suppress only the incorrect CAD-003 shield reference geometry; preserve CAD-001/CAD-002 and sweep source geometry.
-2. Build one lightweight 1.2 mm L-shaped shield segment for the master row using the current sheet-metal/bend rules where practical.
-3. Set the side leg at `X = 65 mm`.
-4. Let the side leg run from `BLUE_SHIELD_FRONT_SETBACK` rearward toward `COMP_DEPTH = 100 mm`.
-5. At the front leading edge, create a 90° front return toward the service side with nominal span `LOCK_ZONE_W = 25 mm` (approximately X=65..90 mm).
-6. Compute the U-catch motion at 0°, 15°, 30°, 45°, 60°, 75°, and 90° about the frozen 5/5 mm hinge axis.
-7. Derive the front setback and the smallest practical **horizontal slot/notch in the front return** from only the moving catch volume that crosses/approaches this front return.
-8. Require >=4.0 mm clearance to the slot/notch edges and any adjacent bend/side-partition metal; target >=4.5 mm where practical.
-9. Preserve maximum shield metal and avoid an unnecessary direct tool path toward future lock wiring/emergency-release areas.
-10. Generate a clear isolated shield screenshot showing the whole L-shaped shield segment, not merely the slot frame.
-11. Regenerate front/top/isometric and all seven sweep views; report front setback Y, front-return span, slot/notch X/Z extents, governing edge/corner, closest angle, and final minimum clearance.
-12. Update `CAD_LOG.md` and `handoff/CAD-003.json` only when this rebuilt geometry passes; push `cad/CAD-003`; stop.
-13. Do not start CAD-004.
+1. Read `DESIGN_ERRATA.md` E-002 and E-003 before touching Fusion.
+2. Do **not** redesign the L-section dimensions yet.
+3. Inspect the occurrence/component transforms of `02_CAD001_MASTER_DOOR...` and `03_CAD002_XG07A_UCATCH...` and record the exact transform used by the approved master cell (expected +550 mm review X offset).
+4. Recreate or move `04_CAD003_BLUE_SHIELD...` so it uses the **same occurrence transform / parent coordinate frame** as the approved door and catch.
+5. Interpret `X = 65 mm`, `Y = BLUE_SHIELD_FRONT_SETBACK`, and all other CAD-003 shield dimensions as **local master-cell coordinates** inside that occurrence frame.
+6. Hide superseded `01_MASTER_LATCH_CELL` / old analysis references if they visually obscure the review. Do not delete approved evidence.
+7. Before running any sweep, generate a **combined placement checkpoint** showing only:
+   - reference 90 × 50 × 100 master cell,
+   - approved CAD-001 door,
+   - approved CAD-002 U-catch,
+   - corrected CAD-003 L-shield.
+8. In that view, the long side partition must visibly sit **inside the same 90 mm cell**, 25 mm from the service-side edge (local X=65 mm), and the front return must be physically in front of the future lock zone where the U-catch can pass through its slot.
+9. Also generate an isolated shield view showing the full long side leg and short front return.
+10. If the combined placement view is not visually correct, stop and fix placement only. Do not perform clearance measurements on separated geometry.
+11. Only after placement is correct, rerun 0°, 15°, 30°, 45°, 60°, 75°, and 90° and measure clearance to the slot/opening edges and nearby remaining shield metal.
+12. Update evidence/handoff only after the combined placement and sweep both pass. Push `cad/CAD-003` and stop. Do not start CAD-004.
 
 ## Acceptance checks
 
-- Isolated shield visibly reads as a long L-shaped protective sheet: long side partition + short front return.
-- No freestanding rectangular-frame substitute.
-- Front return covers the lock-zone front except for the local U-catch slot/notch.
-- U-catch crosses the front-return slot into the lock zone without collision.
+- Shield, door, and U-catch visibly occupy the **same master cell**.
+- Shield uses same master-cell occurrence transform as CAD-001/CAD-002.
+- Local shield X=65 mm corresponds physically to the 65/25 mm key-space/lock-zone split.
+- Isolated shield visibly reads as a long L-shaped protective sheet, not a small frame.
+- Front return contains only the local U-catch slot/notch.
+- U-catch passes through the front-return slot into the lock zone without collision.
 - Minimum moving clearance >=4.0 mm; target >=4.5 mm where practical.
-- Frozen hinge axis, CAD-001 door, and CAD-002 catch unchanged.
 - No CAD-004 geometry added.
 
 ## Hold
 
-CAD-004 remains blocked until this corrected physical shield is reviewed and approved.
+CAD-004 remains blocked until the shield is first proven in the correct master-cell coordinate frame and the corrected sweep evidence passes.
