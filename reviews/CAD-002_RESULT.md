@@ -1,34 +1,66 @@
 # CAD-002 Design Authority Result
 
-STATUS: HUMAN_DECISION_REQUIRED
+STATUS: CHANGES_REQUIRED
 
-## Review summary
+## Decision
 
-CAD-002 otherwise satisfies the released static U-catch scope:
+The prior `HUMAN_DECISION_REQUIRED` hold is resolved by the owner's physical measurement and drawing review. CAD-002 is **not yet approved** because the current U-catch model has two geometric errors that must be corrected before CAD-003.
 
-- approved CAD-001 door remains unchanged and healthy;
-- catch plate modeled as 20 x 36.5 x 1.5 mm;
-- loop rod diameter modeled as 3.0 mm;
-- loop projection from plate outer face modeled as 26.0 mm;
-- catch mounted on the 25 mm hidden return with the approved 5.0 mm inward edge inset;
-- no blue shield, lock body, red wall, shim, hinge rod, motion study, or 48-door pattern was added;
-- CAD-003 sweep work has not started.
+## Owner-confirmed / drawing-confirmed corrections
 
-## Blocking point
+1. **Catch plate size**
+   - Correct plate size: **20.0 x 34.5 x 1.5 mm**.
+   - The current 20.0 x 36.5 x 1.5 mm plate is wrong.
 
-The U-catch loop leg-center spacing is currently **provisional at 12.0 mm**. The supplied source drawing does not dimension that spacing. This dimension affects the true physical loop geometry and therefore the swept-envelope/interference work planned for CAD-003.
+2. **U-loop orientation**
+   - The two parallel **3.0 mm diameter** projecting legs are arranged **horizontally left-right in the plate front view**, not vertically.
+   - In the KeyBox CAD coordinate convention used in CAD-002, the two leg centerlines must therefore be separated along the plate-width / X direction and share the same Z centerline.
+   - Projection remains perpendicular to the plate along compartment depth / Y.
 
-## Smallest owner action required
+3. **U-loop spacing from physical measurement**
+   - Owner measured **17.0 mm outside-to-outside** across the two parallel 3.0 mm rods.
+   - Therefore the controlling leg center-to-center spacing is **14.0 mm**.
+   - Derived inside clear spacing is **11.0 mm**.
+   - Replace the provisional 12.0 mm spacing with **14.0 mm**.
 
-Please measure the physical XG-07A catch and report **the center-to-center distance between the two parallel round loop legs** (the two 3 mm rods) in millimeters.
+4. **Mounting holes**
+   - Model the two **Ø4.2 mm** catch mounting holes shown in the supplied XG-07A drawing.
+   - Their vertical center-to-center spacing is **25.0 ±0.2 mm** per the drawing.
 
-If center-to-center is awkward to measure, report either:
+5. **Dimensions that remain unchanged**
+   - Plate width: 20.0 mm.
+   - Plate thickness: 1.5 mm.
+   - U-loop rod diameter: 3.0 mm.
+   - Loop projection from the plate: **26 ±1 mm**.
+   - Catch location on the 25 mm hidden return: **5.0 mm inward edge inset**.
+   - Approved CAD-001 door geometry must remain unchanged.
 
-- outside-to-outside width across both rods, or
-- inside-to-inside clear width between the rods,
+## Required CAD-002 correction
 
-and state which one you measured. With 3.0 mm rod diameter, the design authority can convert it to center spacing.
+Modify only the U-catch component on branch `cad/CAD-002`:
+
+- change plate height from 36.5 mm to 34.5 mm;
+- rotate/rebuild the U-loop so the two projecting legs are horizontally separated in front view;
+- set leg center spacing to 14.0 mm;
+- add the two Ø4.2 mounting holes at 25.0 mm vertical center spacing;
+- preserve the 26 mm projection, 3 mm rod diameter, 5 mm inward inset, and approved door baseline;
+- regenerate front/top/isometric evidence and machine-readable measurements;
+- update `handoff/CAD-002.json` to `READY_FOR_DESIGN_REVIEW` with no provisional loop-spacing deviation;
+- push the corrected `cad/CAD-002` branch and stop.
+
+## Acceptance checks
+
+- Plate = **20.0 x 34.5 x 1.5 mm**.
+- 2 x Ø4.2 mounting holes, 25.0 mm vertical center-to-center.
+- Two Ø3.0 projecting legs are horizontal left-right in front view.
+- Outside-to-outside across rods = **17.0 mm**.
+- Center-to-center across rods = **14.0 mm**.
+- Inside clear spacing = **11.0 mm**.
+- Projection = **26 mm nominal**.
+- 5.0 mm inward edge inset preserved.
+- CAD-001 door remains unchanged and healthy.
+- No blue shield, lock body, red wall, shim, hinge rod, motion study, or 48-door pattern is added.
 
 ## Hold
 
-Do not merge CAD-002 and do not start CAD-003 until this one physical dimension is confirmed. All other CAD-002 geometry should remain unchanged while waiting.
+CAD-003 remains blocked until the corrected CAD-002 evidence is reviewed and approved.
