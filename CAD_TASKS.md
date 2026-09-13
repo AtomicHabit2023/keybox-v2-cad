@@ -45,7 +45,7 @@ See `reviews/CAD-002_RESULT.md` for the controlling approval.
 
 ## CAD-003 — Blue shield + true U-catch sweep
 
-**Status:** CHANGES REQUIRED / RERUN RELEASED — see `reviews/CAD-003_RESULT.md`
+**Status:** CHANGES REQUIRED / SIDE-SHIELD RERUN RELEASED — see `reviews/CAD-003_RESULT.md` and `DESIGN_ERRATA.md` E-002
 
 ### Frozen hinge axis
 
@@ -54,15 +54,25 @@ See `reviews/CAD-002_RESULT.md` for the controlling approval.
 - Axis direction = Z.
 - Ø4.6 mm door guide holes centered on this axis for the Ø4.0 mm shared hinge rod reference.
 
+### Controlling shield interpretation
+
+- Tenant key-space width: **65 mm**.
+- Lock/shield-zone width: **25 mm**.
+- Nominal blue-shield partition: **constant-X Y-Z plane at X = 65 mm**.
+- `BLUE_SHIELD_FRONT_SETBACK` is the shield's leading edge along **+Y compartment depth**.
+- The U-catch pass-through is a local **Y-Z relief** in this partition.
+- Do **not** use the superseded constant-Y X-Z wall / 119 mm relief interpretation.
+
 ### Corrected scope
 
 - Preserve the approved CAD-001 door and approved CAD-002 U-catch unchanged.
-- Replace the provisional CAD-003 axis with the frozen 5 mm / 5 mm axis above.
-- Model the blue shield **front** as an X-Z face at a derived constant-Y setback; do not reuse the prior constant-X Y-Z side-plane interpretation.
-- Rotate the door through 0° to 90° and calculate/check the real U-catch moving envelope.
-- Derive the shield front pass-through / relief from the moving envelope, not only the final closed position.
-- Use at least **4 mm safety allowance** at the closest moving approach.
-- Record the shield-front constant-Y position, relief width/height, closest angle, and minimum clearance.
+- Keep the frozen 5 mm / 5 mm hinge axis.
+- Model only the lightweight constant-X blue-shield partition needed for the sweep study.
+- Evaluate 0°, 15°, 30°, 45°, 60°, 75°, and 90°.
+- Derive the local Y-Z relief from only the moving catch geometry that intersects/approaches the 1.2 mm shield slab at X = 65 mm, plus at least **4 mm safety allowance**.
+- Derive `BLUE_SHIELD_FRONT_SETBACK` along Y while preserving as much protective front material as practical.
+- Report shield X, front-setback Y, opening Y range/depth, opening Z range/height, closest angle, and minimum clearance.
+- If a secure local opening cannot be achieved inside the intended 90 mm cell / 25 mm lock zone, stop with `HUMAN_DECISION_REQUIRED` rather than enlarging the opening or redesigning CAD-001/CAD-002.
 
 ### Do not build yet
 
