@@ -66,3 +66,15 @@ Stop after those folds are measured and visually verified. Do not add U-catch or
 - Saved the active Fusion document as `KeyBox_V2_CAD001_MasterDoor` in the `KeyBox System` Fusion folder. Saved state was verified with `isModified = false`.
 - Exported the native Fusion archive checkpoint to `evidence/CAD001/KeyBox_V2_CAD001_MasterDoor.f3d`.
 - Exact machine-readable measurements are stored in `evidence/CAD001/CAD001_MEASUREMENTS.json`; execution and review notes are stored in `evidence/CAD001/README.md`.
+
+## 2026-09-13 — CAD-001 final baseline restored; ready for design review
+
+- A later CAD-001R attempt incorrectly forced the uninterrupted planar face to 87.5 x 47.0 mm, producing an oversized formed envelope of approximately 90.2 x 52.4 mm. That attempt was abandoned and is not final evidence.
+- Restored the original, physically correct CAD-001 baseline in which 87.5 x 47.0 mm controls the complete formed front-plane envelope.
+- Confirmed the restored formed envelope as 87.5 mm wide x 12.0 mm deep x 47.0 mm high.
+- Confirmed the derived uninterrupted planar region as approximately 84.8 x 41.6 mm.
+- Retained four healthy inward 90-degree bends, a valid sheet-metal body, and a healthy flat pattern.
+- Confirmed fit within the 90 x 50 mm cell pitch, leaving 2.5 mm nominal horizontal gap and 3.0 mm nominal vertical gap.
+- Created the final review package at `evidence/CAD001_FINAL/`, including front, top, and isometric views; machine-readable measurements; notes; and the saved native `.f3d` checkpoint.
+- No Fusion geometry was modified while preparing the final evidence package.
+- CAD-002 remains blocked and was not started.

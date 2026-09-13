@@ -1,0 +1,73 @@
+{
+  "task": "CAD-001",
+  "evidencePackage": "CAD001_FINAL",
+  "baselineStatus": "RESTORED_CORRECT_BASELINE",
+  "document": {
+    "name": "KeyBox_V2_CAD001_MasterDoor",
+    "isSaved": true,
+    "isModified": false,
+    "dataFileId": "urn:adsk.wipprod:dm.lineage:VmD6TB8fSdGf1QIwmgctcw"
+  },
+  "reviewOffsetMm": [550.0, 0.0, 0.0],
+  "referenceCellMm": {
+    "size": [90.0, 100.0, 50.0]
+  },
+  "door": {
+    "component": "02_CAD001_MASTER_DOOR_FOLDS",
+    "body": "CAD001_MASTER_DOOR_SHEET_METAL",
+    "isSheetMetal": true,
+    "isValid": true,
+    "formedEnvelopeMm": {
+      "min": [0.0, 0.0, 1.5],
+      "max": [87.5, 12.0, 48.5],
+      "size": [87.5, 12.0, 47.0]
+    },
+    "derivedPlanarFrontRegionMm": [84.8, 41.6],
+    "areaMm2": 13893.168708,
+    "volumeMm3": 8072.244872,
+    "cylindricalFaceCount": 8,
+    "cylindricalRadiiMm": [1.5, 1.5, 1.5, 1.5, 2.7, 2.7, 2.7, 2.7]
+  },
+  "cellPitchFit": {
+    "pitchMm": [90.0, 50.0],
+    "nominalGapMm": [2.5, 3.0],
+    "status": "PASS",
+    "statement": "The complete formed envelope is 87.5 x 47.0 mm and fits the 90 x 50 mm pitch with the intended nominal gaps."
+  },
+  "sheetMetalRule": {
+    "name": "KEYBOX_V2_CAD001_1P2MM (Convert)",
+    "thicknessMm": 1.2,
+    "insideBendRadiusMm": 1.5,
+    "outsideBendRadiusMm": 2.7,
+    "kFactor": 0.42,
+    "reliefWidthMm": 2.0,
+    "reliefDepthMm": 3.5
+  },
+  "bends": [
+    {"name": "BEND_TOP_INWARD_90", "nominalFlangeMm": 10.0, "angleDeg": 90.0, "direction": "inward", "health": "healthy"},
+    {"name": "BEND_BOTTOM_INWARD_90", "nominalFlangeMm": 10.0, "angleDeg": 90.0, "direction": "inward", "health": "healthy"},
+    {"name": "BEND_LATCH_FIRST_90", "nominalFlangeMm": 12.0, "angleDeg": 90.0, "direction": "inward", "health": "healthy"},
+    {"name": "BEND_LATCH_RETURN_90", "nominalFlangeMm": 25.0, "angleDeg": 90.0, "direction": "hidden return", "health": "healthy"}
+  ],
+  "flatPattern": {
+    "exists": true,
+    "name": "FlatPattern1",
+    "health": "healthy",
+    "boundsMm": {
+      "min": [-35.995752, 0.0, -1.2],
+      "max": [84.0, 62.495752, 0.0],
+      "size": [119.995752, 62.495752, 1.2]
+    },
+    "releaseStatus": "review-only; not a fabrication release"
+  },
+  "scopeChecks": {
+    "uCatchAdded": false,
+    "shieldAdded": false,
+    "serviceWallAdded": false,
+    "lockAdded": false,
+    "shimAdded": false,
+    "hingeRodAdded": false,
+    "patternedCopiesAdded": false,
+    "cad002Started": false
+  }
+}
