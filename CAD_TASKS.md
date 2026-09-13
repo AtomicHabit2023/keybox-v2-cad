@@ -45,26 +45,24 @@ See `reviews/CAD-002_RESULT.md` for the controlling approval.
 
 ## CAD-003 — Blue shield + true U-catch sweep
 
-**Status:** HUMAN DECISION REQUIRED — see `reviews/CAD-003_RESULT.md`
+**Status:** CHANGES REQUIRED / RERUN RELEASED — see `reviews/CAD-003_RESULT.md`
 
-### Scope
+### Frozen hinge axis
+
+- `HINGE_AXIS_EDGE_OFFSET = 5.0 mm` from the hinge-side door edge.
+- `HINGE_AXIS_FRONT_OFFSET = 5.0 mm` behind the front-face plane.
+- Axis direction = Z.
+- Ø4.6 mm door guide holes centered on this axis for the Ø4.0 mm shared hinge rod reference.
+
+### Corrected scope
 
 - Preserve the approved CAD-001 door and approved CAD-002 U-catch unchanged.
-- Add the blue protective shield geometry only to the level required to evaluate the catch path and tenant anti-tamper protection.
-- Rotate the door through its operational opening/closing range and calculate/check the real U-catch swept envelope.
-- Design the shield front pass-through / relief from the moving swept envelope, not only the final closed position.
-- Use a **starting 4 mm safety allowance** at the closest moving approach to account for coating, bend tolerance, hinge play, and assembly variation.
-- Keep the shield parametric and fabrication-friendly; avoid unnecessary detail.
-- Record the minimum-clearance location and value across the motion sweep.
-
-### Current hold
-
-The first CAD-003 submission is not accepted as the physical sweep because:
-
-- the shield front was modeled as a constant-X Y-Z plane instead of the required constant-Y X-Z front pass-through plane; and
-- the sweep used an unfrozen Z hinge axis at local X=0, Y=0 while the actual hinge-axis edge/front offsets remain TBD.
-
-The owner/design authority must freeze the hinge-axis offsets before the corrected CAD-003 rerun. The recommended starting values are 5.0 mm from the hinge-side edge and 5.0 mm behind the front-face plane; see `reviews/CAD-003_RESULT.md`.
+- Replace the provisional CAD-003 axis with the frozen 5 mm / 5 mm axis above.
+- Model the blue shield **front** as an X-Z face at a derived constant-Y setback; do not reuse the prior constant-X Y-Z side-plane interpretation.
+- Rotate the door through 0° to 90° and calculate/check the real U-catch moving envelope.
+- Derive the shield front pass-through / relief from the moving envelope, not only the final closed position.
+- Use at least **4 mm safety allowance** at the closest moving approach.
+- Record the shield-front constant-Y position, relief width/height, closest angle, and minimum clearance.
 
 ### Do not build yet
 
@@ -76,7 +74,7 @@ The owner/design authority must freeze the hinge-axis offsets before the correct
 
 ### Stop gate / evidence
 
-After the hinge-axis decision, correct only CAD-003. Save a new Fusion checkpoint; provide front/top/isometric views plus motion/interference evidence showing the corrected sweep at representative angles and the measured minimum clearance; update `CAD_LOG.md`; update `handoff/CAD-003.json` with `READY_FOR_DESIGN_REVIEW`; push branch `cad/CAD-003`; stop for design-authority review.
+Correct only CAD-003. Save a new Fusion checkpoint; provide front/top/isometric views plus motion/interference evidence at 0°, 15°, 30°, 45°, 60°, 75°, and 90°; update `CAD_LOG.md`; update `handoff/CAD-003.json` with `READY_FOR_DESIGN_REVIEW`; push branch `cad/CAD-003`; stop for design-authority review.
 
 ---
 
