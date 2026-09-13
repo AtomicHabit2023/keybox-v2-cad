@@ -1,0 +1,28 @@
+{
+  "task": "CAD-001",
+  "status": "READY_FOR_DESIGN_REVIEW",
+  "branch": "cad/CAD-001-review",
+  "fusion_document": "KeyBox_V2_CAD001_MasterDoor",
+  "head_sha": null,
+  "summary": "Restored the correct original CAD-001 formed-envelope baseline after abandoning the oversized CAD-001R interpretation. No geometry was changed and CAD-002 was not started.",
+  "evidence": [
+    "evidence/CAD001_FINAL/CAD001_FINAL_front.png",
+    "evidence/CAD001_FINAL/CAD001_FINAL_top.png",
+    "evidence/CAD001_FINAL/CAD001_FINAL_isometric.png",
+    "evidence/CAD001_FINAL/CAD001_FINAL_MEASUREMENTS.json",
+    "evidence/CAD001_FINAL/README.md",
+    "evidence/CAD001_FINAL/KeyBox_V2_CAD001_MasterDoor_FINAL.f3d"
+  ],
+  "checks": {
+    "formed_envelope": "PASS: 87.5 x 12.0 x 47.0 mm",
+    "derived_planar_face": "PASS: approximately 84.8 x 41.6 mm",
+    "bend_health": "PASS: four healthy inward 90-degree bends",
+    "sheet_metal_health": "PASS",
+    "cell_pitch_clearance": "PASS: 2.5 mm horizontal and 3.0 mm vertical nominal gap",
+    "interference": "PASS",
+    "flat_pattern": "PASS",
+    "cad002_started": "NO"
+  },
+  "deviations": [],
+  "questions_for_design_authority": []
+}
