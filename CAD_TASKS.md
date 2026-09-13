@@ -25,14 +25,18 @@ See `reviews/CAD-001_RESULT.md` for the controlling approval.
 
 ## CAD-002 — Real U-catch on approved door
 
-**Status:** READY / RELEASED
+**Status:** CHANGES REQUIRED — see `reviews/CAD-002_RESULT.md`
 
 ### Scope
 
 - Preserve the approved CAD-001 sheet-metal door unchanged.
 - Model the actual XG-07A U-catch from the supplied dimensions, not a bounding block.
-- Catch plate reference: 20 mm × 36.5 mm × 1.5 mm.
-- Catch loop projection reference: approximately 26 mm.
+- Correct catch plate: **20.0 × 34.5 × 1.5 mm**.
+- Two catch mounting holes: **Ø4.2 mm**, **25.0 ±0.2 mm** vertical center-to-center.
+- U-loop rod diameter: **3.0 mm**.
+- Two projecting U-loop legs are arranged **horizontally left-right in plate front view**, not vertically.
+- Owner-measured rod outside-to-outside width: **17.0 mm**, giving **14.0 mm center-to-center** and **11.0 mm inside clear spacing**.
+- Catch loop projection: **26 ±1 mm** from the plate.
 - Mount the catch on the 25 mm hidden return with the approved **5 mm inward edge inset**.
 - Verify static closed-position geometry and record exact catch placement relative to the door/folds.
 - Keep the model parametric where repeated/functional dimensions are involved.
@@ -48,7 +52,7 @@ See `reviews/CAD-001_RESULT.md` for the controlling approval.
 
 ### Stop gate / evidence
 
-Save the Fusion checkpoint; provide front/top/isometric views and machine-readable catch dimensions/placement; update `CAD_LOG.md`; create `handoff/CAD-002.json` with `READY_FOR_DESIGN_REVIEW`; push branch `cad/CAD-002`; stop for design-authority review.
+Correct only CAD-002. Save the Fusion checkpoint; provide fresh front/top/isometric views and machine-readable catch dimensions/placement; update `CAD_LOG.md`; update `handoff/CAD-002.json` with `READY_FOR_DESIGN_REVIEW`; push branch `cad/CAD-002`; stop for design-authority review.
 
 Static fit in CAD-002 does **not** approve the moving sweep. Full U-catch swept-envelope validation belongs to CAD-003.
 
