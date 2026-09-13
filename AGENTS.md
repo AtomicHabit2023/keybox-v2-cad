@@ -30,6 +30,19 @@ If any documents conflict, the **latest explicit design-authority correction/res
 - Do not use the superseded inaccurate Phase-2 latch reference geometry as fabrication geometry.
 - `87.5 × 47.0 mm` is the **maximum complete formed door envelope**. The uninterrupted planar center face is derived.
 
+## Low-resource Fusion discipline
+
+The owner workstation is adequate for the master-cell work but has limited RAM/graphics headroom. Keep Fusion models deliberately lean:
+
+- build and validate one master cell before replication;
+- reuse approved components/instances instead of creating 48 independent feature histories;
+- suppress or remove obsolete experimental geometry after an approved checkpoint when safe to do so;
+- avoid unnecessary high-detail cosmetic geometry, threads, hardware internals, and duplicated reference solids;
+- prefer lightweight reference geometry for purchased hardware unless exact geometry is required for interference or mounting;
+- save a clean native `.f3d` checkpoint at every approved gate before major restructuring;
+- perform large patterns, interference checks, and flat-pattern operations only when required by the active task;
+- if Fusion becomes unstable or recompute times increase sharply, stop at the current safe checkpoint and report the performance issue rather than adding more geometry.
+
 ## Branch / handoff workflow
 
 For each new CAD stage after CAD-001 closure:
